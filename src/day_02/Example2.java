@@ -62,10 +62,20 @@ public class Example2 { // class start
         float value5 = scan.nextFloat();
         System.out.println("7. nextFloat() result : "+ value5 );
 
-        //8. nextDouble();   : 입력받은 실수(Double) 반환 , 입력값이 Double 허용 범위 벗어나면 오류
+        // 8. nextDouble();   : 입력받은 실수(Double) 반환 , 입력값이 Double 허용 범위 벗어나면 오류
         System.out.print("8. nextDouble() : ");
         double value6 = scan.nextDouble();
         System.out.println("8. nextDouble() result : "+ value6 );
+
+        // 9. nextBoolean():  : 입력받은 불리언(Boolean) 반환 , 입력값이 Boolean 허용 범위 벗어나면 오류
+        System.out.print("9. nextBoolean() : ");
+        boolean value7 = scan.nextBoolean();
+        System.out.println("9. nextBoolean() result : "+ value7 );
+
+        // 10. next().charAt(0) : 입력받은 문자열 중에 첫번째 글자 1개(char) 반환 * nextChar() 없다.
+        System.out.println("10. next().charAt( 0 ) : ");
+        char value8 = scan.next().charAt(0);
+        System.out.println("10. next().charAt( 0 ) result : " + value8 );
 
 
 
