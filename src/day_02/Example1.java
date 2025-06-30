@@ -1,6 +1,6 @@
 package day_02; //패키지명
 
-public class example1 { // class start
+public class Example1 { // class start
     public static void main(String[] args) { // main s
 
         // (변수) 타입변환 , 캐스팅 , 다형성( 하나의 자료가 여러 개 타입으로 변환이 가능하다 )
