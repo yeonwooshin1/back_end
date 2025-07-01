@@ -122,8 +122,8 @@ public class 실습3 { // class start
 
         // 15.
         System.out.print("점수를 입력하세요 : ");
-        int value21 = scan.nextInt();
-        System.out.println("등급 : " + (value21 >= 90 ? 'A' : (value21 >= 80 ? 'B' : 'C' )));
+        int value23 = scan.nextInt();
+        System.out.println("등급 : " + (value23 >= 90 ? 'A' : (value23 >= 80 ? 'B' : 'C' )));
 
 
 
