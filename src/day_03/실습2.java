@@ -72,19 +72,5 @@ public class 실습2 { // class start
         System.out.println("프로게이머 여부 : " + value6);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     } // main end
 }// class end
