@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class 실습4 { // class start
     public static void main(String[] args) { // main start
         Scanner scan = new Scanner(System.in);
-        /*
+
         // 1.
         System.out.print("첫번째 점수 : ");
         int score1 = scan.nextInt();
@@ -203,8 +203,6 @@ public class 실습4 { // class start
             }
         }
 
-
-        */
         // 15.
         System.out.print("플레이어1 ");
         int intP1 = scan.nextInt();
