@@ -15,7 +15,7 @@ public class 종합과제1 { // class start
             Scanner scan = new Scanner(System.in);
             int choose = scan.nextInt();
             if(choose == 1){
-                System.out.print("전화번호 : ");         String phone = scan.next(); // 입력받기
+                System.out.print("전화번호 : ");         String phone = scan.next();
                 System.out.print("인원수 : ");       int count = scan.nextInt();
                 if(phone1 == null){
                     phone1 = phone;
@@ -35,7 +35,7 @@ public class 종합과제1 { // class start
             } // if end
             if(choose == 2){
                 System.out.println("============= 대기 현황 =============");
-                if( phone1 != null ) { // 게시물1 비어있지 않으면
+                if( phone1 != null ) {
                     System.out.print("연락처 : " + phone1);
                     System.out.println(" - 인원 : " + count1);
                     System.out.println("------------------------------------");
