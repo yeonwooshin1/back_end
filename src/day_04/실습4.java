@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class 실습4 { // class start
     public static void main(String[] args) { // main start
+        /*
         Scanner scan = new Scanner(System.in);
 
         // 1.
@@ -36,7 +37,7 @@ public class 실습4 { // class start
         String id = scan.next();
         System.out.print("비밀번호 : ");
         String password = scan.next();
-        if( id.equals("admin") && password.equals("1234"){
+        if( id.equals("admin") && password.equals("1234")){
             System.out.println("로그인 성공");
         }else {
             System.out.println("로그인 실패");
@@ -230,7 +231,7 @@ public class 실습4 { // class start
         } else if (intP1 == intP2) {
             System.out.println("무승부");
         }
-
+            */
 
     } // main end
 
