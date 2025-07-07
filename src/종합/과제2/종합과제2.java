@@ -15,11 +15,11 @@ public class 종합과제2 {    // class start
             System.out.print("선택 > ");
             int choose = scan.nextInt();
             if(choose == 1){
-                boolean check = false;
                 System.out.print("전화번호 : ");         String phoneInput = scan.next();
                 System.out.print("인원수 : ");       int countInput = scan.nextInt();
                 Waiting waiting = new Waiting();
                 waiting.count = countInput;     waiting.phone = phoneInput;
+                boolean check = false;
                 for( int i = 0; i< waitings.length; i++){
                     if(waitings[i] == null){
                         waitings[i] = waiting;
