@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class 실습7 {  // class start
 
     public static void main(String[] args) {    // main start
+
         // 1.
         Book book1 = new Book();
         book1.title = "이것이 자바다";     book1.author = "신용권";  book1.price = 30000;
@@ -36,6 +37,7 @@ public class 실습7 {  // class start
         System.out.println("입금 후 잔액 : " + bank.balance);
         bank.balance -= 3000;
         System.out.println("출금 후 잔액 : " + bank.balance);
+
         // 5.
 
         Product product1 = new Product();
@@ -48,7 +50,7 @@ public class 실습7 {  // class start
         }else {
             System.out.println(product2.name);
         }
-
+        System.out.println();
 
         // 6.
 
