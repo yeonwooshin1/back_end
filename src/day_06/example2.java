@@ -1,5 +1,7 @@
 package day_06; // pakage
 
+import java.util.Arrays;
+
 public class example2 { // class start
     public static void main(String[] args) {    // main start
 
