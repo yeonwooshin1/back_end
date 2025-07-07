@@ -1,4 +1,4 @@
-package 종합과제1; // pakage
+package 종합.과제1; // pakage
 
 import java.util.Scanner;
 
