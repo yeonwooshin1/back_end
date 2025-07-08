@@ -24,11 +24,11 @@ public class BoardService4 {    // class start
             }   // if choose == 1 end
             if(choose == 2){
                 Board[] boardArray = bs.doGet();
-                for(int i = 0; i < boardArray.length; i++){
-                    if(boardArray[i] != null ){
+                for(Board board : boardArray){
+                    if( board != null ){
                         System.out.println("============= 게시물 목록 =============");
-                        System.out.println("작성자 : " + boardArray[i].writer);
-                        System.out.println("내용 : " + boardArray[i].content);
+                        System.out.println("작성자 : " + board.writer);
+                        System.out.println("내용 : " + board.content);
                         System.out.println("------------------------------------");
                     }   // if end
                 }   // for i end
@@ -47,6 +47,7 @@ class Board{
 class BoardController{
     Board[] boards = new Board[100];
 
+    // 등록 메소드
     boolean doPost(String content, String writer){
 
         Board board = new Board();
@@ -61,6 +62,7 @@ class BoardController{
         return false;
     }   // func end
 
+    // 조회 메소드
     Board[] doGet(){
         return boards;
     }   // func end
