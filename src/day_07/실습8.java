@@ -45,6 +45,7 @@ public class 실습8 {  // class start
         System.out.println(result4);
 
         // 8.
+
         ParkingLot parkingLot = new ParkingLot();
         int result5 = parkingLot.calculateFee(65);
         int result6 = parkingLot.calculateFee(140);
@@ -58,19 +59,19 @@ public class 실습8 {  // class start
 class Printer{
     void printMessage(){
         System.out.println(" 안녕하세요, 메소드입니다." );
-    }
-}
+    }   // func end
+}   // class Printer end
 class Greeter{
     void greet( String name){
         System.out.println( "안녕하세요, " + name + "님!" );
-    }
-}
+    }   // func end
+}   // class Greeter end
 class SimpleCalculator {
     int add( int a , int b ){
         int sum = a + b ;
         return sum;
-    }
-}
+    }   // func end
+}   // class SimpleCalculator end
 class Checker{
     boolean isEven( int x ){
         if(x%2 == 0){
@@ -78,35 +79,35 @@ class Checker{
         }
         else{
             return false;
-        }
-    }
-}
+        }   // if end
+    }   // func end
+}   // class Checker end
 class Lamp{
     boolean isOn;
 
     void turnOn(){
         isOn = true;
         System.out.println(isOn);
-    }
+    }   // func end
     void turnOff(){
         isOn = false;
         System.out.println(isOn);
-    }
-}
+    }   // func end
+}   // class Lamp end
 class Product{
     String name;
     int stock;
 
     boolean sell(int amount){
-        if(stock > amount){
+        if(stock >= amount){
             stock -= amount;
             return true;
         }else {
             System.out.println("재고 부족");
             return false;
-        }
-    }
-}
+        }   // if end
+    }   // func end
+}   // class Product end
 class Visualizer{
     String getStars( int number ){
         String result = "";
@@ -114,8 +115,8 @@ class Visualizer{
             result += "★";
         }   // for end
         return  result;
-    }
-}
+    }   // func end
+}   // class Visualizer end
 class ParkingLot {
     int calculateFee (int minute){
         int fee = 0;
@@ -125,10 +126,10 @@ class ParkingLot {
                 fee = 20000;
                 return fee;
             }
-            else { return fee;}
+            else return fee;
         } else {
             fee = 1000;
             return fee;
-        }
+        }   // if end
     } // func end
-}
+}   // class ParkingLot end
