@@ -53,7 +53,6 @@ public class 실습8 {  // class start
         System.out.println(result6 + "원");
 
 
-
     } // main end
 }   // class end
 class Printer{
