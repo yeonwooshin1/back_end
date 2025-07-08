@@ -1,4 +1,4 @@
-package 심화; // pakage
+package 심화; // package
 
 import java.util.Scanner;
 
@@ -6,7 +6,8 @@ public class 심화 {   // class start
     public static void main(String[] args) {    // main start
 
         BankController bankController = new BankController();
-        BankService bankService = new BankService();
+
+        Scanner scan = new Scanner(System.in);  // scan
 
 
         for(;;){
@@ -17,8 +18,8 @@ public class 심화 {   // class start
             int choose = bankService.inputInt();
             if(choose == 1){
                 System.out.println("--- 계좌 등록 ---");
-                System.out.print("계좌번호 : ");         String accountInput = bankService.inputString();
-                System.out.print("비밀번호 : ");       int passwordInput = bankService.inputInt();
+                System.out.print("계좌번호 : ");         String accountInput =  scan.next();
+                System.out.print("비밀번호 : ");       int passwordInput =  scan.nextInt();
                 boolean alert = bankController.addAccount( accountInput , passwordInput );
                 if(alert){System.out.println("[안내] 계좌 등록이 완료되었습니다.");}
                 else{ System.out.println("[경고] 계좌 한도에 도달 하셨습니다.");}
@@ -26,9 +27,9 @@ public class 심화 {   // class start
 
             if(choose == 2){
                 System.out.println("--- 입금 ---");
-                System.out.print("계좌번호 : ");         String accountInput = bankService.inputString();
-                System.out.print("비밀번호 : ");       int passwordInput = bankService.inputInt();
-                System.out.print("입금액 : ");       int moneyInput = bankService.inputInt();
+                System.out.print("계좌번호 : ");         String accountInput = scan.next();
+                System.out.print("비밀번호 : ");       int passwordInput = scan.nextInt();
+                System.out.print("입금액 : ");       int moneyInput = scan.nextInt();
                 boolean addAlert = bankController.addMoney( accountInput , passwordInput , moneyInput );
                 if(addAlert){System.out.println("[안내] 입금이 완료되었습니다.");}
                 else{ System.out.println("[경고] 계좌정보가 일치하지 않습니다.");}
@@ -36,9 +37,9 @@ public class 심화 {   // class start
 
             if(choose == 3){
                 System.out.println("--- 출금 ---");
-                System.out.print("계좌번호 : ");         String accountInput = bankService.inputString();
-                System.out.print("비밀번호 : ");       int passwordInput = bankService.inputInt();
-                System.out.print("출금액 : ");       int moneyInput = bankService.inputInt();
+                System.out.print("계좌번호 : ");         String accountInput = scan.next();
+                System.out.print("비밀번호 : ");       int passwordInput = scan.nextInt();
+                System.out.print("출금액 : ");       int moneyInput = scan.nextInt();
                 int withdrawAlert = bankController.withdrawMoney( accountInput , passwordInput , moneyInput );
                 if(withdrawAlert == 1 ){System.out.println("[안내] 출금이 완료되었습니다.");}
                 else if(withdrawAlert == 2){ System.out.println("[경고] 잔액이 부족합니다.");}
@@ -47,8 +48,8 @@ public class 심화 {   // class start
 
             if(choose == 4){
                 System.out.println("--- 잔고 확인 ---");
-                System.out.print("계좌번호 : ");         String accountInput = bankService.inputString();
-                System.out.print("비밀번호 : ");       int passwordInput = bankService.inputInt();
+                System.out.print("계좌번호 : ");         String accountInput = scan.next();
+                System.out.print("비밀번호 : ");       int passwordInput = scan.nextInt();
                 int seeAlert = bankController.seeMoney( accountInput ,  passwordInput);
                 if(seeAlert != -1){
                     System.out.println("[잔고] "+ seeAlert+ "원");
@@ -131,20 +132,3 @@ class BankController{
     }
 
 }   // class BankController end
-
-class BankService{
-    Scanner scan = new Scanner(System.in);  // scan
-
-    String inputString(){
-
-        String inputSt = scan.next();
-        return inputSt;
-    }   // func end
-
-    int inputInt(){
-
-        int inputIn = scan.nextInt();
-        return inputIn;
-    }   // func end
-
-}
