@@ -130,11 +130,6 @@ class BankController{
         return -1;
     }
 
-
-    Account[] getAccountList(){
-        return accounts;
-    }   // func end
-
 }   // class BankController end
 
 class BankService{
