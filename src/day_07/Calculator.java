@@ -25,7 +25,7 @@ public class Calculator {   // Calculator class start
         // return 값 : 메소드를 호출 했던 곳으로 반환하는 값;
     }   // func end
 
-    // (2) 매개변수 X 반환값 X (void)
+    // (2) 매개변수 X 반환값 X ( void )
     void PowerOn(){
         // void : return 값이 없다.
         // { } : 메소드 실행 될 때 처리할 코드들
@@ -36,7 +36,7 @@ public class Calculator {   // Calculator class start
             // 새로 할당된 cal2는 호출한 적이 없으니 false이다.
     }   // func end
 
-    // (3) 매개변수 O , 반환값 x
+    // (3) 매개변수 O , 반환값 X ( void )
     void printSum( int x , int y ){
         // (int x , int y) : 메소드 호출시 인수값을 정수 2개로 저장하는 변수
         if( isPowerOn ){    // 만약에 전원이 켜져있으면?
@@ -46,8 +46,21 @@ public class Calculator {   // Calculator class start
         }else {
             System.out.println("전원이 켜져있지 않습니다.");
             return;
+        }   // if end
+    }   // func end
+
+    // (4) 매개변수 O , 반환값 O
+    int add( int x , int y ){
+        if( isPowerOn ){
+            int result = x + y;
+            return result;
+        }else{
+            System.out.println("전원이 꺼져있다.");
+            return 0;
         }
+
     }
+
 
 
 }   // Calculator class end

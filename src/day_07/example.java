@@ -56,12 +56,19 @@ public class example {  // class start
         // [5] 매개변수 0 , 반환값 X
         cal1.printSum( 3 , 5 ); // 2개의 정수 인수값 x: 3 , y: 5
 
-        // 오류발생 , 인수값 타입이 불일치
-        // cal1.printSum( 2.14 , 5.1 );
+            // 오류발생 , 인수값 타입이 불일치
+            // cal1.printSum( 2.14 , 5.1 );
 
-        // isPowerOn이 false라 안됨~
-        cal2.printSum(3 ,5);
+            // isPowerOn이 false라 안됨~
+            cal2.printSum(3 ,5);
 
+        // [6] 매개변수 O , 반환값 O
+        int result2 = cal1.add( 10 , 3 );
+        // int : .add 함수의 반환값 타입이 int 라서.
+
+        int a = 1;
+        // int result3 = cal1.add( "안녕" , a );
+        // 오류 발생 : 인수 값과 매개변수의 타입 일치 해야한다.
 
 
     }   // main end
