@@ -15,7 +15,7 @@ public class 심화 {   // class start
             System.out.println("  1.계좌등록 | 2.입금 | 3.출금 | 4.잔고 ");
             System.out.println("======================================");
             System.out.print("선택 > ");
-            int choose = bankService.inputInt();
+            int choose = scan.nextInt();
             if(choose == 1){
                 System.out.println("--- 계좌 등록 ---");
                 System.out.print("계좌번호 : ");         String accountInput =  scan.next();
