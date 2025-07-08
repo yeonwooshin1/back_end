@@ -42,7 +42,8 @@ class Board{
     // 멤버변수
     String content;
     String writer;
-}
+}   // class Board end
+
 class BoardController{
     Board[] boards = new Board[100];
 
@@ -55,12 +56,12 @@ class BoardController{
             if(boards[i] == null){
                 boards[i] = board;
                 return true;
-            }
-        }
+            }   // if end
+        }   // for i end
         return false;
-    }
+    }   // func end
 
     Board[] doGet(){
         return boards;
-    }
+    }   // func end
 }
