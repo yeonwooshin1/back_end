@@ -69,7 +69,7 @@ public class BankService {  // class start
                 }
                 else if(sendAlert == 2) System.out.println("[경고] 잔액이 부족합니다.");
                 else if(sendAlert == 3) System.out.println("[경고] 받는 분 계좌정보가 없습니다.");
-                else if(sendAlert == 0) System.out.println("[경고] 입금자와 받는자 계좌가 일치합니다.");
+                else if(sendAlert == 0) System.out.println("[경고] 입금 계좌와 받을 계좌가 일치합니다.");
                 else System.out.println("[경고] 계좌정보가 일치하지 않습니다.");
             }
         }   // for 무한루프 end
@@ -148,7 +148,7 @@ class BankController{
     }
 
     int sendMoney ( String sendAccountNumber , int password , String receiveAccountNumber , int money ){
-        Account account = new Account();
+        Account account = new Account();    // 객체 부여
 
         account.MyAccountNumber = sendAccountNumber;            account.password = password;
         account.receiveAccountNumber = receiveAccountNumber;   account.money = money;
@@ -159,8 +159,8 @@ class BankController{
                     for(Account accountJ : accounts){
                         if(accountJ != null && accountJ.receiveAccountNumber.equals(account.receiveAccountNumber)) {
                             if(accountJ == accountI){
-                                return 0;
-                            }
+                                return 0;   // 받는분과 보내는분 계좌가 일치합니다.
+                            }   // 받는 계좌와 보내는 계좌가 같은지 확인하는 if end
                             if (accountI.money >= account.money) {
                                 accountI.money -= account.money; // 돈 빼고 대입
                                 accountJ.money += account.money;    // 돈 더하고 대입
