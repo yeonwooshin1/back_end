@@ -17,7 +17,7 @@ public class BankService {  // class start
             int choose = scan.nextInt();    // choose scan 받기 1,2,3,4,5 중에
             if(choose == 1){    // 1이라면? 계좌등록
                 System.out.println("--- 계좌 등록 ---");
-                System.out.print("계좌번호 : ");         String accountInput =  scan.next();    // 인자값 계좌번호 받기
+                System.out.print("계좌번호 : ");         String accountInput =  scan.next();    // 인수값 계좌번호 받기
                 System.out.print("비밀번호 : ");       int passwordInput =  scan.nextInt();     // 인수값 비밀번호 받기
                 boolean alert = bankController.addAccount( accountInput , passwordInput );     // 계좌번호 추가 boolean 타입인 addAccount 메소드 호출 후 alert 변수명에 대입
                 if(alert){System.out.println("[안내] 계좌 등록이 완료되었습니다.");}              // 만약 alert가 true라면 ?
@@ -26,7 +26,7 @@ public class BankService {  // class start
 
             if(choose == 2){    // 2라면? 입금
                 System.out.println("--- 입금 ---");
-                System.out.print("계좌번호 : ");         String accountInput = scan.next(); // 인자값 계좌번호 받기
+                System.out.print("계좌번호 : ");         String accountInput = scan.next(); // 인수값 계좌번호 받기
                 System.out.print("비밀번호 : ");       int passwordInput = scan.nextInt();  // 인수값 비밀번호 받기
                 System.out.print("입금액 : ");       int moneyInput = scan.nextInt();      // 인수값 입금할 돈 받기
                 boolean addAlert = bankController.addMoney( accountInput , passwordInput , moneyInput );    // 입금할 boolean 타입인 addMoney 메소드 호출 후 addAlert 변수명에 대입
@@ -36,7 +36,7 @@ public class BankService {  // class start
 
             if(choose == 3){    // 3이라면? 출금
                 System.out.println("--- 출금 ---");
-                System.out.print("계좌번호 : ");         String accountInput = scan.next(); // 인자값 계좌번호 받기
+                System.out.print("계좌번호 : ");         String accountInput = scan.next(); // 인수값 계좌번호 받기
                 System.out.print("비밀번호 : ");       int passwordInput = scan.nextInt();  // 인수값 비밀번호 받기
                 System.out.print("출금액 : ");       int moneyInput = scan.nextInt();      // 인수값 출금할 돈 받기
                 int withdrawAlert = bankController.withdrawMoney( accountInput , passwordInput , moneyInput );  // 출금할 int 타입인 withdrawMoney 메소드 호출 후 withdrawAlert 변수명에 대입
@@ -58,9 +58,9 @@ public class BankService {  // class start
 
             if(choose == 5){    // 5라면? 계좌이체
                 System.out.println("--- 계좌 이체 ---");
-                System.out.print("보내는 분 계좌번호 : ");         String sendAccountInput = scan.next();   // 인자값 보낼계좌명 받기
+                System.out.print("보내는 분 계좌번호 : ");         String sendAccountInput = scan.next();   // 인수값 보낼계좌명 받기
                 System.out.print("비밀번호 : ");                  int passwordInput = scan.nextInt();       // 인수값 비밀번호 받기
-                System.out.print("받는 분 계좌번호 : ");           String receiveAccountInput = scan.next();   // 인자값 받을계좌명 받기
+                System.out.print("받는 분 계좌번호 : ");           String receiveAccountInput = scan.next();   // 인수값 받을계좌명 받기
                 System.out.print("이체할 금액 : ");                int sendMoney = scan.nextInt();               // 인수값 보낼 돈 받기
                 int sendAlert = bankController.sendMoney( sendAccountInput ,  passwordInput , receiveAccountInput , sendMoney );    // 계좌이체할 sendMoney 메소드 호출, sendAlert가 변수명
                 if(sendAlert == 1){                                                     // 만약 seeAlert가 1이라면?
