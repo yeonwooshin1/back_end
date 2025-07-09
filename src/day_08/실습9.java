@@ -29,8 +29,8 @@ public class 실습9 {  // class start
         // 4.
 
         BankAccount bank = new BankAccount( "111-222-3333" ,"유재석" ,10000 );
-        bank.deposit(5000);         int result2 = bank.withdraw(3000);
-        System.out.println(result2);
+        bank.deposit(5000);         int balance = bank.withdraw(3000);
+        System.out.println(balance);
 
         // 5.
 
