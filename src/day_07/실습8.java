@@ -1,4 +1,4 @@
-package day_07;     // pakage
+package day_07;     // package
 
 public class 실습8 {  // class start
     public static void main(String[] args) {    // main start

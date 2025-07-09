@@ -2,7 +2,7 @@ package 심화; // package
 
 import java.util.Scanner;
 
-public class 심화 {   // class start
+public class BankService {   // class start
     public static void main(String[] args) {    // main start
 
         BankController bankController = new BankController();
