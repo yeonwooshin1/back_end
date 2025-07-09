@@ -2,7 +2,7 @@ package 심화.과제1; // package
 
 import java.util.Scanner;
 
-public class BankService {   // class start
+public class  BankService {   // class start
     public static void main(String[] args) {    // main start
 
         BankController bankController = new BankController();
@@ -87,13 +87,10 @@ class BankController{
     }   // func end
 
     boolean addMoney(String accountNumber , int password , int money){
-        Account account = new Account();    // Account 객체 선언
-
-        account.accountNumber = accountNumber; account.password = password; account.money = money; // 매개변수 받은 값 멤버변수에 넣기
         boolean error = true;
         for(int i = 0; i< accounts.length; i++){
-            if(accounts[i] != null && accounts[i].accountNumber.equals(account.accountNumber) && accounts[i].password == (account.password)){
-                accounts[i].money += account.money;
+            if(accounts[i] != null && accounts[i].accountNumber.equals(accountNumber) && accounts[i].password == (password)){
+                accounts[i].money += money;
                 return true;
             }
         }
@@ -101,14 +98,11 @@ class BankController{
     }   // func end
 
     int withdrawMoney(String accountNumber , int password , int money){
-        Account account = new Account();    // Account 객체 선언
-
-        account.accountNumber = accountNumber; account.password = password; account.money = money; // 매개변수 받은 값 멤버변수에 넣기
 
         for(int i = 0; i< accounts.length; i++){
-            if(accounts[i] != null && accounts[i].accountNumber.equals(account.accountNumber) && accounts[i].password == (account.password)){
-                if(accounts[i].money >= account.money){
-                    accounts[i].money -= account.money;
+            if(accounts[i] != null && accounts[i].accountNumber.equals(accountNumber) && accounts[i].password == (password)){
+                if(accounts[i].money >= money){
+                    accounts[i].money -= money;
                     return 1;
                 }
                 else return 2;
@@ -118,12 +112,9 @@ class BankController{
     }   // func end
 
     int seeMoney(String accountNumber , int password){
-        Account account = new Account();    // Account 객체 선언
-
-        account.accountNumber = accountNumber; account.password = password; // 매개변수 받은 값 멤버변수에 넣기
 
         for(int i = 0; i< accounts.length; i++){
-            if(accounts[i] != null && accounts[i].accountNumber.equals(account.accountNumber) && accounts[i].password == (account.password)){
+            if(accounts[i] != null && accounts[i].accountNumber.equals(accountNumber) && accounts[i].password == (password)){
 
                 return accounts[i].money;
             }
