@@ -1,0 +1,3 @@
+[JAVA] 종합예제5 : boardService5 (생성자)
+[ 목표 ] boardService4(종합예제4) 에서 객체 생성를 생성자로 변경 하시오.
+[ 이하 조건 ] : boardService4 동일
