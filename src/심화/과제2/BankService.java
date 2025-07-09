@@ -150,18 +150,18 @@ class BankController{
     int sendMoney ( String sendAccountNumber , int password , String receiveAccountNumber , int money ){
         Account account = new Account();    // 객체 부여
 
-        account.MyAccountNumber = sendAccountNumber;            account.password = password;
-        account.receiveAccountNumber = receiveAccountNumber;   account.money = money;
+        account.MyAccountNumber = sendAccountNumber;            account.password = password;    // 보내는 계좌번호와 그에 맞는 비밀번호 매개변수로 받은 거 멤버변수 대입
+        account.receiveAccountNumber = receiveAccountNumber;   account.money = money;           // 받는 계좌번호와 보낼 돈 매개변수로 받은 거 멤버변수 대입
 
-        for(Account accountI : accounts){
-            if(accountI != null){
-                if(accountI.MyAccountNumber.equals(account.MyAccountNumber) && accountI.password == account.password){
-                    for(Account accountJ : accounts){
-                        if(accountJ != null && accountJ.receiveAccountNumber.equals(account.receiveAccountNumber)) {
-                            if(accountJ == accountI){
+        for(Account accountI : accounts){   // 향상된 for문 Account 객체타입인 accountI라는 변수명을 가진 accounts 배열을 순회한다.
+            if(accountI != null){   // 만약 계좌가 하나도 없으면?
+                if(accountI.MyAccountNumber.equals(account.MyAccountNumber) && accountI.password == account.password){  // accountI의 계좌번호와 비밀번호가 매개변수에 들어온 것과 일치한가?
+                    for(Account accountJ : accounts){   // 받을 계좌번호를 찾기 위한 향상된 for문 Account 객체타입인 accountJ라는 변수명을 가진 accounts 배열을 순회함
+                        if(accountJ != null && accountJ.receiveAccountNumber.equals(account.receiveAccountNumber)) {    // 계좌번호가 있는지 매개변수로 받은 받는계좌와 그 안에 있는 계좌가 일치한지
+                            if(accountJ == accountI){   // 만약 받는 계좌와 보내는 계좌가 일치한다면?
                                 return 0;   // 받는분과 보내는분 계좌가 일치합니다.
                             }   // 받는 계좌와 보내는 계좌가 같은지 확인하는 if end
-                            if (accountI.money >= account.money) {
+                            if (accountI.money >= account.money) {  // 돈이 없는데 돈을 보내려고 해?
                                 accountI.money -= account.money; // 돈 빼고 대입
                                 accountJ.money += account.money;    // 돈 더하고 대입
                                 return 1;  // 돈이 이체 됐습니다.
