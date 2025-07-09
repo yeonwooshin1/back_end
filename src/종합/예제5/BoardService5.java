@@ -59,24 +59,31 @@ class Board{
     }
 }   // class Board end
 
-class BoardController{  // (2) (게시물 이벤트) 기느으 제어/로직 담당
+class BoardController{  // (2) (게시물 이벤트) 기능 제어/로직 담당
     Board[] boards = new Board[100];    // 배열 100개 생성
 
-    // 1. 등록 메소드
+    // 1. 등록 메소드 : 입력 받은 자료를 받아서 객체를 생성하여 배열에 저장
+    // 메소드 이름 : doPost
+    // 매개변수 : 저장할 내용 과 작성자   , String content , String writer
+    // 반환값 : 성공/실패 == boolean    , boolean
     boolean doPost(String content, String writer){
-
+        // (1) 생성자를 이용한 객체 만들기
         Board board = new Board(content , writer);
 
+        // (2) 배열내 빈 공간을 찾아서 생성된 객체를 대입
         for(int i = 0 ; i < boards.length; i++ ){
             if(boards[i] == null){
                 boards[i] = board;
-                return true;
+                return true;    // 배열이 비어있다면 true를 준다.
             }   // if end
         }   // for i end
-        return false;
+        return false;   // 배열이 100개 다 차있으면 false를 준다.
     }   // func end
 
-    // 조회 메소드
+    // 2. (출력)조회 메소드 : 현재 저장된 모든 객체들을 가지고 있는 배열 호출
+    // 메소드 이름 : doGet
+    // 매개변수    : x          , x
+    // 반환값      : boards    , Board[]
     Board[] doGet(){
         return boards;
     }   // func end
