@@ -14,12 +14,11 @@ public class 실습9 {  // class start
         System.out.println( book2.title + book2.author + book2.price );
 
         // 2.
+
         Pet pet1 = new Pet("초코","푸들", 3);
         Pet pet2 = new Pet("나비","코리안숏헤어",  5);
         System.out.println("이름 : " +pet1.name + ", 종류 : " +pet1.species +", 나이 : " + pet1.age +"살");
         System.out.println("이름 : " +pet2.name + ", 종류 : " +pet2.species +", 나이 : " + pet2.age +"살");
-
-        // 3.
 
         // 3.
 
@@ -30,7 +29,6 @@ public class 실습9 {  // class start
         // 4.
 
         BankAccount bank = new BankAccount( "111-222-3333" ,"유재석" ,10000 );
-
         bank.deposit(5000);         int result2 = bank.withdraw(3000);
         System.out.println(result2);
 
@@ -52,6 +50,7 @@ public class 실습9 {  // class start
         System.out.println(television.channel + "\t" + television.volume);
 
         // 8.
+
         Player player1 = new Player("손흥민" ,90 , 95);
         Player player2 = new Player("이강인" , 85 , 92);
         System.out.println(player1.name + player1.speed + player1.power);
@@ -73,7 +72,6 @@ public class 실습9 {  // class start
         UserProfile userProfile = new UserProfile(nameInput , ageInput , mbtiInput );
         System.out.println("--- 프로필 ---");
         System.out.println("이름: "+ userProfile.name + ", 나이: "+ userProfile.age + ", MBTI: " + userProfile.mbti);
-
 
 
     }   // main end
