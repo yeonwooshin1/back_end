@@ -1,4 +1,4 @@
-package 심화; // package
+package 심화.과제1; // package
 
 import java.util.Scanner;
 
