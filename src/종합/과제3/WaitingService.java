@@ -2,7 +2,7 @@ package 종합.과제3; // pakage
 
 import java.util.Scanner;
 
-public class 종합과제3 {    // class start
+public class WaitingService {    // class start
     public static void main(String[] args) {    // main start
 
         WaitingController controller = new WaitingController(); // WaitingController 클래스에 객체를 controller라는 변수에 할당한다.

@@ -2,7 +2,7 @@ package 종합.과제2; // pakage
 
 import java.util.Scanner;
 
-public class 종합과제2 {    // class start
+public class WaitingService {    // class start
     public static void main(String[] args) {    // main start
 
         Waiting[] waitings = new Waiting[100];

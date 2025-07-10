@@ -2,7 +2,7 @@ package 종합.과제1; // pakage
 
 import java.util.Scanner;
 
-public class 종합과제1 { // class start
+public class WaitingService { // class start
     public static void main(String[] args) { // main start
         String phone1 = null;  String phone2 = null;  String phone3 = null;
         int count1 = 0;     int count2 = 0;      int count3 = 0;
