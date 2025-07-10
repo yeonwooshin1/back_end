@@ -36,6 +36,7 @@ public class example1 { // class start
                 * 자동완성 사용하면 자동 import가 가능하다.
                 * 단] java.lang 패키지와 동일 패키지내 클래스는 예외/생략가능
                     -> System 클래스 , String 클래스
+
         [ getter and setter ]
             1. 정의 : 클래스내 private 멤버변수를 다른 클래스가 사용할 수 있도록 정의하는 함수.
             2. 관례적으로
@@ -50,12 +51,14 @@ public class example1 { // class start
         */
 
         // [1] 하위 package1 폴더내 A클래스 접근
+
         A a = new A();
         System.out.println( a.공개변수 );     // 가능!!!
         // System.out.println( a.비공개변수 );    // 오류발생 : 다른
         // System.out.println( a.일반변수 );     // 오류발생 : 같은 패키지내에서만 접근 가능함
 
         // [2] 하위 package2 폴더내 C클래스 접근
+
         C c = new C();
         // System.out.println( c.비공개변수 );   // private라 불가능
         System.out.println( c.반환메소드() );    // 가능
