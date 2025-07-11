@@ -25,9 +25,12 @@ public class BoardService6 {
                 Board[] boards = BoardController.doGet();
                 for(int i = 0; i < boards.length; i++){
                     Board board = boards[i];
-                    System.out.println("작성자 : " + board.getContent() );
-                    System.out.println("내용 : " + board.getWriter() );
-                    System.out.println("------------------------------------");
+                    if(board != null){
+                        System.out.println("작성자 : " + board.getContent() );
+                        System.out.println("내용 : " + board.getWriter() );
+                        System.out.println("------------------------------------");
+                    }
+
                 }
             }
         } // for end

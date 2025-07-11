@@ -1,0 +1,11 @@
+[[1] 패키지 구성
+     1) 패키지명은 소문자
+     controller
+     model
+         dao
+         dto
+     view
+ [2] 프로그램을 최초로 시작할 main 갖는 클래스
+ public class AppStart {
+
+ }

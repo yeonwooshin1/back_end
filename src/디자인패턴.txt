@@ -1,0 +1,121 @@
+[ 디자인 패턴 ]
+    1. 패턴 이란 : 되풀이되는
+    2. 디자인 패턴 : 소프트웨어 설계 과정에서 자주 발생하는 문제점/설계 유형
+    3. 학습할 패턴 종류
+        1) 싱글톤 패턴
+        2) MVC 패턴
+    4. 목적 : 여러 개발자들이 협업간의 관례적인 규칙(패턴)으로 개발의 효율성 높인다.
+[ 싱글톤 ]
+    1. 정의 : 프로그램내 객체(인스턴스)가 단 하나만 존재하는 설계
+    2. 목적 : 하나의 객체(인스턴스)를 만들고 공유
+        - 여러개의 객체가 존재하면 서로 다른 메모리를 사용하므로 공유하는데 제약이 있다.
+        - 협업에 있어서 굳이 여러개 객체(인스턴스)가 필요 없는 경우가 있다.
+    3. 싱글톤 만드는 방법
+        단계1) 지정한 클래스에 기본 생성자를 private 한다.
+            private 생성자명(){}
+        단계2) 지정한 클래스에 private static final 으로 객체(인스턴스) 선언한다.
+            private static final 클래스명 변수명 = new 생성자명();
+        단계3) 지정한 클래스에 public static 으로 getInstance 메소드 선언한다.
+            public static 클래스명 getInstance(){
+                return 변수명;
+            }
+    4. 다른 클래스에서 싱글톤 호출하기.
+        클래스명.getInstance();
+
+[ 싱글톤 ]
+    1. 정의 : 프로그램 내 객체(인스턴스)가 단 하나만 존재하는 설계
+
+    2. 목적 : 하나의 객체(인스턴스)를 만들고 공유
+
+        - 여러 개의 객체가 존재하면 서로 다른 메모를 사용하므로 공유하는데 제약이 있다.
+        - 협업에 있어서 굳이 여러개 객체(인스턴스)기 필요없는 경우가 있다
+
+    3. 싱글톤 만드는 방법
+
+        단계1) 지정한 클래스에 기본 생성자를 private 한다.
+            private 생성자명(){}
+
+        단계2) 지정한 클래스에 private static final 으로 객체(인스턴스) 선언한다.
+            private static final 클래스명 변수명 = new 생성자명();
+
+        단계3) 지정한 클래스에 public static 으로 getInstance 메소드 선언한다.
+            public static 클래스명 getInstance( ){
+            return 변수명;
+            }
+
+    4. 다른 클래스에서 싱글톤 호출하기.
+        클래스명.getInstance();
+
+[ MVC 패턴 ]
+
+    1. 정의 : (웹/앱) 소프트웨어 개발에서 사용되는 디자인 패턴으로 세가지 주요 역할을 분리하여 코드에 모듈화(조각) 와 유지보수 높인다.
+
+    2. 목적 : 프로젝트 협언가의 코드와 파일들을 MVC 패턴의 따라 구성하여 효율성을 높인다.
+
+    3. 장점 : 협업간 유지보수 , 묘듈화 , 단일기능책임 등
+
+    4. 단점 : 분리함에 따라 관리 복잡도 높다.
+
+    5. 예시)
+        (1) 1인식당 : 사장님이 혼자서 서빙 주문 받고 요리도 하고 재료준비도 한다.   ( 식당 규모가 커지면 감당이 안된다. )
+
+        (2) 직인이 있는 식당 : 서빙직원, 요리직원, 재료직원 각 역할별로 담당한다. ( 문제가 발생하면 빠른 담당자에게 빠른 처리를 요구할 수 있다. )
+
+    6. 사용처 : 다양하 실무 프레임워크( Spring ) 에서 권장하는 패턴이다.
+
+    7. 레이어/계층
+        V( View )       :   입출력 담당
+
+            1) 주로 웹/앱 에서는 HTML / CSS / JS / JSP / REACT / 플러터 ( 프론트엔드 )
+
+            2) 사용자로부터 입력과 출력 받는다.
+
+            3) 관례적인 규칙( console ) view 클래스에서만 print 함수와 scan 함수를 사용한다.
+
+        C( Controller ) :   model 과 view 사이의 제어 / 전달 / 유효성검사 담당
+
+            1) 주로 웹/앱 에서는 JAVA/PYTHON/NODE.JS ( 백엔드 )
+
+            2) 사용자로부터 (VIEW)부터 요청을 받아 model 에게 전달하고 처리 결과를 view 에게 전달한다.
+
+            3) 주요 키워드
+                MVC1 패턴                 : JSP( controller + view )  , model
+                MVC2 패턴                 : controller , view , model             [ V ]
+                MVC3 패턴 3티어(Spring)    : controller , service , view , model
+
+        M( model )      :   데이터 관리 담당
+            1) 웹 / 앱에서는 JAVA / PYTHON / NODE.JS ( 백엔드 )
+
+            2) 데이터베이스 상호작용
+
+            3) 주요 키워드
+                DAO ( data access object )      : 데이터에 접근 객체     : ex] 물류 센터
+                DTO ( data transfer object )    : 데이토를 이동 객체     : ex] 택시 기사
+
+            4) 관례적인 규칙
+                DTO 에는 데이터모델 이므로 싱글톤을 사용하지 않는다.
+
+    8. 레이어/계층 간의 흐름도
+        [주문]
+            주문요청 : 콜라 하나 주세요.
+                VIEW ---DTO---> controller ---DTO---> model(DAO)
+
+            주문 응답 : 콜라 하나 줄게요.
+                VIEW <--- DTO--- controller <---DTO--- model(DAO)
+
+    9. 파일/폴더 MVC 기준 구분
+        - 프로젝트 폴더
+            - controller 폴더
+                memberController
+                BoardController
+            - model
+                -> dao 폴더
+                    MemberDao
+                    BoardDao
+                -> dto 폴더
+                    MemberDto
+                    BoardDto
+            - view 폴더   * 추후에 HTML 로 변경 된다.
+                MemberView
+                BoardView
+            - AppStart 클래스

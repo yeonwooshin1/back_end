@@ -9,6 +9,7 @@ public class TicketMachine {    // class TicketMachine start
     }   // func end
 
     static void printTotalTickets(){    // static printTotalTickets 총 티켓 발권 메소드
+
         System.out.println(totalTickets);   //  System.out.println(totalTickets);
     }   // func end
 }   // class TicketMachine end
