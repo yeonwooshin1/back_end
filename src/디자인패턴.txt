@@ -90,7 +90,7 @@
 
             3) 주요 키워드
                 DAO ( data access object )      : 데이터에 접근 객체     : ex] 물류 센터
-                DTO ( data transfer object )    : 데이토를 이동 객체     : ex] 택시 기사
+                DTO ( data transfer object )    : 데이터를 이동 객체     : ex] 택시 기사
 
             4) 관례적인 규칙
                 DTO 에는 데이터모델 이므로 싱글톤을 사용하지 않는다.

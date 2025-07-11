@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class BoardView {
     // (*) 싱글톤 만들기 1~3단계
-    private BoardView(){};  // 1단계
+    private BoardView(){}  // 1단계
 
     private static final BoardView view = new BoardView();  // 2단계
 

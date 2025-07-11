@@ -21,7 +21,7 @@ public class BoardDao { // class BoardDao
     // 1. 등록 처리 메소드 : controller 로 부터 db(배열)에 저장할 객체를 받아서 저장한다.
         // 매개변수 : BoardDto , 반환값 : boolean
     public boolean boardWrite( BoardDto boardDto ){
-        for( int i = 0 ; i<boardDB.length; i++){
+        for( int i = 0 ; i < boardDB.length; i++){
             if(boardDB[i] == null ){
                 boardDB[i] = boardDto;
                 return true;
