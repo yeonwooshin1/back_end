@@ -148,8 +148,6 @@ public class BankController {   // class BankController start
     }
 
 
-
-    /** true = 잔액이 부족하다 */
     // 잔액 부족 여부 헬퍼 메소드
     private boolean isInsufficientMoney(AccountDto accountDto, int money) {
         return accountDto.getMoney() < money;
