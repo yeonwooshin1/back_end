@@ -1,6 +1,6 @@
-package 심화.advanced.view;
+package 심화.advanced_03_mvc.view;
 
-import 심화.advanced.controller.BankController;
+import 심화.advanced_03_mvc.controller.BankController;
 
 import java.util.Scanner;
 
@@ -67,8 +67,8 @@ public class AccountView {  // AccountView class start
 
         int alert = controller.accountDeposit( accountInput , passwordInput , moneyInput );
 
-        if (alert == 1) { System.out.println("[안내] 입금이 완료되었습니다."); }         // 만약 addAlert가 true 라면 ?
-        else if (alert == 2) { System.out.println("[경고] 계좌내역이 가득찼습니다. 창구에 문의하세요. ");}             // 만약 addAlert가 false 라면 ?
+        if (alert == 1) { System.out.println("[안내] 입금이 완료되었습니다."); }
+        else if (alert == 2) { System.out.println("[경고] 계좌내역이 가득찼습니다. 창구에 문의하세요. ");}
         else if (alert == 3) { System.out.println("[경고] 계좌정보가 일치하지 않습니다."); }
         else { System.out.println("[경고] 시스템 오류입니다. "); }
     }   // func end
@@ -84,8 +84,8 @@ public class AccountView {  // AccountView class start
         int alert = controller.accountWithdraw( accountInput , passwordInput , moneyInput );
 
         if (alert == 0) { System.out.println("[경고] 잔액이 부족합니다."); }
-        else if (alert == 1) { System.out.println("[안내] 출금이 완료되었습니다."); } // 만약 addAlert가 true 라면 ?
-        else if (alert == 2) { System.out.println("[경고] 계좌내역이 가득찼습니다. 창구에 문의하세요. ");}             // 만약 addAlert가 false 라면 ?
+        else if (alert == 1) { System.out.println("[안내] 출금이 완료되었습니다."); }
+        else if (alert == 2) { System.out.println("[경고] 계좌내역이 가득찼습니다. 창구에 문의하세요. ");}
         else if (alert == 3) { System.out.println("[경고] 계좌정보가 일치하지 않습니다."); }
         else { System.out.println("[경고] 시스템 오류입니다. "); }
     }   // func end
@@ -115,11 +115,12 @@ public class AccountView {  // AccountView class start
         System.out.print("이체할 금액 : ");                int sendMoney = scan.nextInt();               // 인수값 보낼 돈 받기
         String alert = controller.accountTransfer( sendAccountInput , passwordInput , receiveAccountInput , sendMoney );
 
-        if(alert.equals("success"))System.out.println("[안내] 이체가 완료되었습니다.");                    // 이체 완료 안내
-        else if(alert.equals("insufficient"))System.out.println("[경고] 잔액이 부족합니다.");  // 만약 seeAlert가 2라면? 잔액 부족
-        else if(alert.equals("maxAccountLog"))System.out.println("[경고] 받으실 계좌가 조회되지 않습니다.");    // 만약 seeAlert가 3이라면? 받는 계좌정보 없음
-        else if(alert.equals("equalAccount"))System.out.println("[경고] 이체할 계좌와 이체 받을 계좌가 일치합니다.");    // 만약 seeAlert가 0이라면? 보낼 계좌번호와 받을 계좌번호 일치로 인한 오류
-        else if(alert.equals("notExitReceiveAccount"))System.out.println("[경고] 계좌정보가 일치하지 않습니다.");   // 만약 seeAlert가 리턴값이 4라면? 보낼 계좌번호에서 계좌번호가 없던가 비밀번호가 틀리던가 둘 중 하나겠죠
+        if(alert.equals("success"))System.out.println("[안내] 이체가 완료되었습니다.");
+        else if(alert.equals("insufficient"))System.out.println("[경고] 잔액이 부족합니다.");
+        else if(alert.equals("maxAccountLog"))System.out.println("[경고] 계좌내역이 가득 찼거나 오류입니다.");
+        else if(alert.equals("equalAccount"))System.out.println("[경고] 이체할 계좌와 이체 받을 계좌가 일치합니다.");
+        else if(alert.equals("notExitReceiveAccount"))System.out.println("[경고] 받으실 계좌가 조회되지 않습니다.");
+        else if(alert.equals("accountPwMismatch"))System.out.println("[경고] 계좌정보가 일치하지 않습니다.");
         else{ System.out.println("[경고] 에러가 발생했습니다."); }
     }   // func end
 
@@ -130,8 +131,10 @@ public class AccountView {  // AccountView class start
         System.out.print("계좌번호 : ");         String sendAccountInput = scan.next();             // 인수값 보낼계좌명 받기
         System.out.print("비밀번호 : ");         int passwordInput = scan.nextInt();               // 인수값 비밀번호 받기
 
-        System.out.println("[경고] 계좌 정보를 찾을 수 없습니다.");    // 리턴값 error 라면? 계좌 정보를 찾을 수 없습니다.
+        String alert = controller.accountLogPrint(sendAccountInput , passwordInput );
 
+        if(alert.equals("error"))    System.out.println("[경고] 계좌 정보를 찾을 수 없습니다.");
+        else System.out.println(alert);
     }   // func end
 
 }   // clas AccountView end

@@ -1,6 +1,6 @@
-package 심화.advanced;
+package 심화.advanced_03_mvc;
 
-import 심화.advanced.view.AccountView;
+import 심화.advanced_03_mvc.view.AccountView;
 
 public class AppStart { // view 실질적 실행파일 class start
     public static void main(String[] args) {    // main start

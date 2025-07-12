@@ -1,8 +1,8 @@
-package 심화.advanced.model.dao;
+package 심화.advanced_03_mvc.model.dao;
 
 
-import 심화.advanced.model.dto.AccountDto;
-import 심화.advanced.model.dto.AccountLogDto;
+import 심화.advanced_03_mvc.model.dto.AccountDto;
+import 심화.advanced_03_mvc.model.dto.AccountLogDto;
 
 public class AccountDao {   // class BankAccountDao start
 
@@ -21,6 +21,7 @@ public class AccountDao {   // class BankAccountDao start
     private static final AccountDto[] accountDB = new AccountDto[100]; // accountDB 배열 선언 : 배열길이 100개
 
     // 메소드
+    // 계좌생성 메소드
     public boolean accountCreate ( AccountDto accountDto ){
         for( int i = 0; i < accountDB.length; i++ ){
             if(accountDB[i] == null){
@@ -32,6 +33,7 @@ public class AccountDao {   // class BankAccountDao start
     }   // func end
 
     // 메소드 2
+    // 계좌내역 출력 메소드
     public boolean accountLogInput(AccountLogDto accountLogDto , String accountNumber){
         for (int i = 0; i < accountDB.length; i++) {
             if(accountDB[i].getMyAccountNumber().equals(accountNumber)){

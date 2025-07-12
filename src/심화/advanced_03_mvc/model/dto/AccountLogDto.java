@@ -1,4 +1,4 @@
-package 심화.advanced.model.dto;
+package 심화.advanced_03_mvc.model.dto;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

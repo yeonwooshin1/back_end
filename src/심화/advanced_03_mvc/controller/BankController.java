@@ -1,9 +1,8 @@
-package 심화.advanced.controller;
+package 심화.advanced_03_mvc.controller;
 
-import 심화.advanced.model.dao.AccountDao;
-import 심화.advanced.model.dao.AccountLogDao;
-import 심화.advanced.model.dto.AccountDto;
-import 심화.advanced.model.dto.AccountLogDto;
+import 심화.advanced_03_mvc.model.dao.AccountDao;
+import 심화.advanced_03_mvc.model.dto.AccountDto;
+import 심화.advanced_03_mvc.model.dto.AccountLogDto;
 
 
 
@@ -21,24 +20,23 @@ public class BankController {   // class BankController start
     // 싱글톤 가져오기 : Dao DB 가져오기
 
     AccountDao accountDao = AccountDao.getInstance();
-    AccountLogDao accountLogDao = AccountLogDao.getInstance();
 
     // 메소드
 
     // 계좌 생성 메소드
 
     public boolean accountCreate (String accountInput , int passwordInput ){
-        accountLogCreate(); // 계좌내역 생성 메소드
-        AccountDto accountDto = new AccountDto( accountInput, passwordInput , accountLogCreate() );
+        AccountDto accountDto = new AccountDto( accountInput, passwordInput  );
 
         boolean resultCreate = accountDao.accountCreate(accountDto);
         return resultCreate;
 
     }   // func end
 
+
     // 계좌 내역 생성 메소드
 
-    public boolean accountLogCreateter (String accountNumber , String logType, int valueMoney, int balance){
+    public boolean accountLogCreate (String accountNumber , String logType, int valueMoney, int balance){
         AccountLogDto accountLogDto = new AccountLogDto( logType, valueMoney , balance );
 
         boolean result = accountDao.accountLogInput(accountLogDto ,accountNumber);   // 계좌에 계좌로그 넣어줄 메소드
@@ -46,11 +44,6 @@ public class BankController {   // class BankController start
     }   // func end
 
 
-    // 계좌 생성시 계좌내역 생성 하기 헬퍼 메소드
-    public AccountLogDto[] accountLogCreate ( ){
-        AccountLogDto[] AccountLogDB = accountLogDao.accountLogPrint();
-        return AccountLogDB;
-    }
 
     // 계좌 입금 메소드
 
@@ -62,7 +55,7 @@ public class BankController {   // class BankController start
             if (accountDto != null && accountDto.getMyAccountNumber().equals(accountNumber) && accountDto.getPassword() == (password)){
                 accountDto.setMoney(accountDto.getMoney() + money);
 
-                boolean resultLogCreate = accountLogCreateter(accountNumber ,"입금" , money , accountDto.getMoney());
+                boolean resultLogCreate = accountLogCreate(accountNumber ,"입금" , money , accountDto.getMoney());
                 if(resultLogCreate){ return 1; }
                 else { return 2; }
             }   // if end
@@ -83,7 +76,7 @@ public class BankController {   // class BankController start
 
                 accountDto.setMoney(accountDto.getMoney() - money);
 
-                boolean log = accountLogCreateter(accountNumber, "출금" , - money , accountDto.getMoney());
+                boolean log = accountLogCreate(accountNumber, "출금" , - money , accountDto.getMoney());
 
                 return log ? 1 : 2;
             }   // if end
@@ -121,8 +114,8 @@ public class BankController {   // class BankController start
                         sendDto.setMoney(sendDto.getMoney() - sendMoney);
                         receiveDto.setMoney(receiveDto.getMoney() + sendMoney);
 
-                        boolean sendLog = accountLogCreateter (accountNumber ,"출금", - sendMoney, sendDto.getMoney() );
-                        boolean receiveLog = accountLogCreateter (receiveAccount ,"입금" , + sendMoney, receiveDto.getMoney() );
+                        boolean sendLog = accountLogCreate (accountNumber ,"출금", - sendMoney, sendDto.getMoney() );
+                        boolean receiveLog = accountLogCreate (receiveAccount ,"입금" , + sendMoney, receiveDto.getMoney() );
                         return sendLog&&receiveLog ? "success" : "maxAccountLog" ;
                     }
                 }
@@ -132,10 +125,30 @@ public class BankController {   // class BankController start
         return "accountPwMismatch";   // 만약 if 조건문을 부합하지 않고 반복문이 끝났다면? false , 즉 계좌 정보가 없다는 것을 반환해준다.
     }
 
+    public String accountLogPrint( String sendAccount, int password ) {
+        AccountDto[] accountDB = accountDao.accountPrint();
+
+        for (AccountDto accountDto : accountDB) {
+            if (accountDto != null && accountDto.getMyAccountNumber().equals(sendAccount) && accountDto.getPassword() == (password)) { // 만약 account 배열이 존재하고 계좌번호와 비밀번호가 매개변수와 일치한다면?
+                String log = "";                // 출력해줄 String log 할당
+                for (int j = 0; j < accountDto.getAccountLogDB().length; j++) { // 로그 배열 순회
+                    if (accountDto.getAccountLogDB()[j] != null) {              // 존재한다면?
+                        AccountLogDto dtoLog = accountDto.getAccountLogDB()[j];         // 간소화
+                        if (dtoLog.getValueMoney() > 0) {                        // 출금인지 입금인지 판단하는 유효성 검사
+                            log += "[" + dtoLog.getNow() + "] " + dtoLog.getLogType() + " | +" + dtoLog.getValueMoney() + "원 | 잔액 : " + dtoLog.getBalance() + "원" + "\n";  // 입금이면 +
+                        } else {
+                            log += "[" + dtoLog.getNow() + "] " + dtoLog.getLogType() + " | " + dtoLog.getValueMoney() + "원 | 잔액 : " + dtoLog.getBalance() + "원" + "\n";   // 출금이면 -
+                        }
+                    }   // if end
+                }   // for j end
+                return log;     // log(입출금, 이체 내역 출력한 값) 값 반환
+            }   // if end
+        }
+        return "error";
+    }
 
 
 
-    //
     /** true = 잔액이 부족하다 */
     // 잔액 부족 여부 헬퍼 메소드
     private boolean isInsufficientMoney(AccountDto accountDto, int money) {

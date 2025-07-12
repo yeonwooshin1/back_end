@@ -1,4 +1,4 @@
-package 심화.advanced.model.dto;
+package 심화.advanced_03_mvc.model.dto;
 
 
 public class AccountDto {   // class BankAccountDto start
@@ -7,19 +7,18 @@ public class AccountDto {   // class BankAccountDto start
     private String MyAccountNumber; // 계좌번호 멤버변수
     private int password;           // 비밀번호 멤버변수
     private int money;              // 돈 멤버변수
-    private AccountLogDto[] accountLogDB;   // 하나의 계좌에 로그를 출력할 배열
+    private AccountLogDto[] accountLogDB = new AccountLogDto[100];   // 하나의 계좌에 로그를 출력할 배열
     // 생성자
     public AccountDto(){}
 
-    public AccountDto(String myAccountNumber, int password , AccountLogDto[] accountLogInput ) {
-        this( myAccountNumber ,password , 0 , accountLogInput );
+    public AccountDto(String myAccountNumber, int password ) {
+        this( myAccountNumber ,password , 0 );
     }   // func 생성자 end
 
-    public AccountDto(String myAccountNumber, int password, int money , AccountLogDto[] accountLogDB) {
+    public AccountDto(String myAccountNumber, int password, int money ) {
         MyAccountNumber = myAccountNumber;
         this.password = password;
         this.money = money;
-
     }   // func 생성자 end
 
 
