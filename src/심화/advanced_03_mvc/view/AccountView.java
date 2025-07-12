@@ -71,6 +71,7 @@ public class AccountView {  // AccountView class start
         else if (alert == 2) { System.out.println("[경고] 계좌내역이 가득찼습니다. 창구에 문의하세요. ");}
         else if (alert == 3) { System.out.println("[경고] 계좌정보가 일치하지 않습니다."); }
         else { System.out.println("[경고] 시스템 오류입니다. "); }
+
     }   // func end
 
     // choose 3 계좌 출금 view   : 계좌번호에 출금하는 view
@@ -88,6 +89,7 @@ public class AccountView {  // AccountView class start
         else if (alert == 2) { System.out.println("[경고] 계좌내역이 가득찼습니다. 창구에 문의하세요. ");}
         else if (alert == 3) { System.out.println("[경고] 계좌정보가 일치하지 않습니다."); }
         else { System.out.println("[경고] 시스템 오류입니다. "); }
+
     }   // func end
 
     // choose 4 계좌 잔액 view   : 계좌번호에 들어있는 잔액 확인 view
@@ -122,6 +124,7 @@ public class AccountView {  // AccountView class start
         else if(alert.equals("notExitReceiveAccount"))System.out.println("[경고] 받으실 계좌가 조회되지 않습니다.");
         else if(alert.equals("accountPwMismatch"))System.out.println("[경고] 계좌정보가 일치하지 않습니다.");
         else{ System.out.println("[경고] 에러가 발생했습니다."); }
+
     }   // func end
 
     // choose 6 계좌내역 view    : 해당 계좌 로그 출력하는 view
@@ -135,6 +138,7 @@ public class AccountView {  // AccountView class start
 
         if(alert.equals("error"))    System.out.println("[경고] 계좌 정보를 찾을 수 없습니다.");
         else System.out.println(alert);
+
     }   // func end
 
 }   // clas AccountView end
