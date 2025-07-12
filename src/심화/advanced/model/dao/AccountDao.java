@@ -2,6 +2,7 @@ package 심화.advanced.model.dao;
 
 
 import 심화.advanced.model.dto.AccountDto;
+import 심화.advanced.model.dto.AccountLogDto;
 
 public class AccountDao {   // class BankAccountDao start
 
@@ -22,15 +23,28 @@ public class AccountDao {   // class BankAccountDao start
     // 메소드
     public boolean accountCreate ( AccountDto accountDto ){
         for( int i = 0; i < accountDB.length; i++ ){
-            AccountDto DB = accountDB[i];
-            if(DB == null){
-                DB = accountDto;
+            if(accountDB[i] == null){
+                accountDB[i] = accountDto;
                 return true;    // 계좌생성 true 반환
             }   // if end
         }   // for i end
         return false;   // DB 다 차있으면 false 반환
     }   // func end
 
+    // 메소드 2
+    public boolean accountLogInput(AccountLogDto accountLogDto , String accountNumber){
+        for (int i = 0; i < accountDB.length; i++) {
+            if(accountDB[i].getMyAccountNumber().equals(accountNumber)){
+                for (int j = 0; j < accountDB[i].getAccountLogDB().length; j++) {
+                    if(accountDB[i].getAccountLogDB()[j] == null){
+                        accountDB[i].getAccountLogDB()[j] = accountLogDto;
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 
     // 매소드 호출
 

@@ -27,11 +27,11 @@ public class AccountLogDto {    // class BankAccountLogDto start
 
         // setter
 
-    public String getLogType() { return logType; }  // setter
+    public String getLogType() { return logType; }  // getter
 
     public void setLogType(String logType) { this.logType = logType; } // setter
 
-    public int getValueMoney() { return valueMoney;} // setter
+    public int getValueMoney() { return valueMoney;} // getter
 
     public void setValueMoney(int valueMoney) { this.valueMoney = valueMoney; } // setter
 
@@ -39,11 +39,11 @@ public class AccountLogDto {    // class BankAccountLogDto start
 
     public int getBalance() { return balance; } // getter
 
-    public void setBalance(int balance) { this.balance = balance; } // getter
+    public void setBalance(int balance) { this.balance = balance; } // setter
 
     public String getNow() { return now; }  // getter
 
-    public void setNow(String now) { this.now = now; }  // getter
+    public void setNow(String now) { this.now = now; }  // setter
 
     // toString
 

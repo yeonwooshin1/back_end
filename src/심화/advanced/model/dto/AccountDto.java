@@ -19,6 +19,7 @@ public class AccountDto {   // class BankAccountDto start
         MyAccountNumber = myAccountNumber;
         this.password = password;
         this.money = money;
+
     }   // func 생성자 end
 
 
@@ -36,7 +37,9 @@ public class AccountDto {   // class BankAccountDto start
 
     public int getMoney() { return money; }   // getter
 
-        // setter
+    public AccountLogDto[] getAccountLogDB() { return accountLogDB; }   // getter
+
+    // setter
 
     public void setMyAccountNumber(String myAccountNumber) { MyAccountNumber = myAccountNumber; }   // setter
 
@@ -44,8 +47,9 @@ public class AccountDto {   // class BankAccountDto start
 
     public void setMoney(int money) { this.money = money; }   // setter
 
+    public void setAccountLogDB(AccountLogDto[] accountLogDB) { this.accountLogDB = accountLogDB;}  // setter
 
-    // toString
+// toString
 
     @Override
     public String toString() {
