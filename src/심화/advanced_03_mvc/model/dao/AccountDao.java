@@ -41,18 +41,18 @@ public class AccountDao {   // class BankAccountDao start
                     if(accountDB[i].getAccountLogDB()[j] == null){
                         accountDB[i].getAccountLogDB()[j] = accountLogDto;
                         return true;
-                    }
-                }
-            }
-        }
+                    }   // if end
+                }   // for end
+            }   // if end
+        }   // for end
         return false;
-    }
+    }   // func end
 
     // 매소드 호출
 
     public AccountDto[] accountPrint(){
         return accountDB;
-    }
+    }   // fun end
 
 
 }   // class BankAccountDao end

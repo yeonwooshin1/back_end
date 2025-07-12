@@ -61,7 +61,7 @@ public class BankController {   // class BankController start
             }   // if end
         }   // for end
         return 3;   // 만약 if 조건문을 부합하지 않고 반복문이 끝났다면? false , 즉 계좌 정보가 없다는 것을 반환해준다.
-    }
+    }   // func end
 
 
     // 계좌 출금 메소드
@@ -82,7 +82,7 @@ public class BankController {   // class BankController start
             }   // if end
         }   // for end
         return 3;   // 만약 if 조건문을 부합하지 않고 반복문이 끝났다면? false , 즉 계좌 정보가 없다는 것을 반환해준다.
-    }
+    }   // func end
 
 
     // 계좌 잔액 확인
@@ -117,13 +117,16 @@ public class BankController {   // class BankController start
                         boolean sendLog = accountLogCreate (accountNumber ,"출금", - sendMoney, sendDto.getMoney() );
                         boolean receiveLog = accountLogCreate (receiveAccount ,"입금" , + sendMoney, receiveDto.getMoney() );
                         return sendLog&&receiveLog ? "success" : "maxAccountLog" ;
-                    }
-                }
+                    }   // if end
+                }   // for end
                 return "notExitReceiveAccount";
             }   // if end
         }   // for end
         return "accountPwMismatch";   // 만약 if 조건문을 부합하지 않고 반복문이 끝났다면? false , 즉 계좌 정보가 없다는 것을 반환해준다.
-    }
+    }   // func end
+
+
+    // 계좌내역 출력 메소드
 
     public String accountLogPrint( String sendAccount, int password ) {
         AccountDto[] accountDB = accountDao.accountPrint();
@@ -143,9 +146,9 @@ public class BankController {   // class BankController start
                 }   // for j end
                 return log;     // log(입출금, 이체 내역 출력한 값) 값 반환
             }   // if end
-        }
+        }   // for end
         return "error";
-    }
+    }   // func end
 
 
     // 잔액 부족 여부 헬퍼 메소드
