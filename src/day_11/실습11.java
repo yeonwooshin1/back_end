@@ -2,6 +2,7 @@ package day_11; // package
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
 
 public class 실습11 { // class start
     public static void main(String[] args) { // main start
@@ -87,8 +88,12 @@ public class 실습11 { // class start
         }   // 무한루프 for
 
         // 8.
-        ArrayList< String > subjects = new ArrayList<>();
-        subjects.add("국어"); subjects.add("수학"); subjects.add("사회"); subjects.add("과학");
+
+        // --- ArrayList< String > subjects = new ArrayList<>(List.of("ex1", "ex2", "ex3"));
+        // --- List.of 쓰면 초반에 설정 가능! add remove도 가능!
+        // 한 가지 더 ! ArrayList 같은 자바제네릭은 객체타입만 받기 때문에 기본형인 int double boolean 이런건 사용안됨 Integer , Double , Boolean 같은 래퍼 클래스만 가능.
+
+        ArrayList< String > subjects = new ArrayList<>(List.of("국어", "수학", "사회" , "과학"));
         // set은 해당 인덱스를 바꿔줌
         subjects.set( 1 , "영어" );
         System.out.println(subjects);
