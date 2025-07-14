@@ -1,6 +1,5 @@
 package day_11; // package
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
