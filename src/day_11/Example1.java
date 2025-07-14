@@ -1,6 +1,5 @@
 package day_11; // package
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class Example1 { // class start
