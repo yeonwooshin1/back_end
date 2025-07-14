@@ -19,9 +19,8 @@ public class WaitingController {    // class start
     // boardWrite 등록 메소드
 
     public boolean boardWrite ( String phoneInput , int countInput ){
-        WaitingDto waitingDto =new WaitingDto( phoneInput , countInput );
-        boolean result = waitingDao.boardWrite (waitingDto);
-        return result;
+        WaitingDto waitingDto = new WaitingDto( phoneInput , countInput );
+        return waitingDao.boardWrite(waitingDto);
 
     }   // func end
 

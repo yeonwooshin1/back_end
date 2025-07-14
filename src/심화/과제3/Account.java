@@ -37,4 +37,5 @@ class Account {  // 객체를 담당하는 Account 클래스 생성
     public void setAccountLogs(AccountLog[] accountLogs) {
         this.accountLogs = accountLogs;
     }   // setter
+
 }   // class Account end

@@ -1,0 +1,80 @@
+[ 데이터 베이스 ]
+    - 데이터 ( 자료 ) , 베이스 ( 모임 / 집합 )
+    1. 정의 : 자료들의 집합
+
+    2. 종류
+
+        1) 관계형 데이터베이스 : 표 (테이블) 형식 *    : Oracle
+        2) NOSQL 데이터베이스 : 객체 형식             : MongoDB
+        3. 목적
+            1) 데이터의 체계적인 고나리
+            2) 데이터 중복 최소화와 일관된 데이터 (무결성)
+            3) 동시 접과 공유 (서버)
+            4) 보안
+
+[ 관계형 데이터베이스 ] : 실무에서 많이 쓰인다.
+    1. 정의 :
+
+        1) 행(가로)와 열 (세로) 이루어진 데이터 집합 , 표/테이블
+        2) 테이블(표)을 고유/식별(PK) 값을 참조하여 다른 테이블 간의 종속되는 관계 표현
+
+    2. 소프트웨어(DBMS)
+
+        1. Oracle 2. MySQL 3. MariaDB 등등 * 면접에서 종류 차이 없다.
+
+    3. 필수 용어
+
+        1. DB   : 데이터베이스 , 자료들의 집합 , ex) 폴더 또는 파일
+        2. DBA  : 데이터베이스 관리자 , 자료 관리자
+
+        3. DBMS : 데이터베이스 관리 시스템 ,
+
+        4. DB SERVER
+            * SERVER(서버) : 자료를 제공하는
+            * CLIENT(클라이언트) : 자료를 제공 받는
+        5. SQL : 데이터베이스 를 조작하기 위한 * 언어 *
+
+         [ PC ] <---- DBMS <---- [ PC2 ]
+          DB          SQL          DBA
+         - 즉 ] 관리자(DBA)는 DBMS 를 이용하여 특정한 pc의 DB를 조작한다.
+
+[ SQL ]
+    1. 정의 : 데이터베이스 에서 데이터를 추출 하고 조작하는데 사용되는 프로그램 언어
+    2. 주요 SQL
+        1) DDL : 데이터베이스 정의 언어
+        2) DML : 데이터ㅣ베이스 조작 언어
+        3) DCL : 데이터베이스 제어언어
+        4) TCL : 트랜잭션 제어 언어
+
+[ 데이터베이스(MYSQL ) 설치 ]
+
+    [ exe 파일 받기 ]
+
+        1. MYSQL 다운로드 링크 접속 ,
+            https://dev.mysql.com/downloads/
+        2. [ https://dev.mysql.com/downloads/installer ] 메뉴 클릭
+        3.
+            Select Version: 8.x
+            Select Operating System: Windows
+                - Windows (x86, 32-bit), MSI Installer	8.0.42	353.7M	[ Download ] 클릭
+        4. [No thanks, just start my download.] 클릭
+
+    [ 설치파일 실행 ]
+
+        1. mysql-installer-community-8.x 실행
+        2. [custom] 선택 -> [next]
+        3. 2가지를 오른쪽으로 이동 후 --> [next]
+            1. [서버] MySQL server 8.xx
+            2. [DB통합관리] application -> MYSQL Workbench 8.xx
+        3. -> [next] -> [excute] -> [next] -> [next]
+        4. type and networking 확인후 -> [next] -> [next]
+            port : 3306 ( *접속 번호-변경 하지 않기 )
+        5. accounts and roles 비밀번호 지정후 -> [next] -> [next] -> [next] -> [excute] -> [finish]
+            password : 1234 ( 학원 이므로 1234 해주세요. )
+        6. -> [next] -> [finish]
+
+    [ workbench 이용하여 설치된 DB 서버에 접속하기 ]
+
+        1. 윈도우메뉴 -> MySQL Workbench 8.0 CE 바탕화면 바로바기 만들기
+        2. MySQL Workbench 8.0 실행
+        3. 메인화면에 [ Local instance MySQL80 ] 구역이 있으면 성공 --> 클릭 --> 패스워드 입력후 [ok]
