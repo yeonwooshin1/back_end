@@ -139,6 +139,7 @@ public class AccountView {  // AccountView class start
         String alert = controller.accountLogPrint(sendAccountInput , passwordInput );
 
         if(alert.equals("error"))    System.out.println("[경고] 계좌 정보를 찾을 수 없습니다.");
+        else if(alert.equals("notExist")) System.out.println("[경고] 계좌 내역이 없습니다.");
         else System.out.println(alert);
 
     }   // func end

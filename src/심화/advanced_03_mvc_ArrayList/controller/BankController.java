@@ -110,14 +110,14 @@ public class BankController {   // class BankController start
                 if (isInsufficientMoney( sendDto, sendMoney )) return "insufficient";
 
                 for( AccountDto receiveDto : accountDB ){
-                    if(receiveDto != null && receiveDto.getMyAccountNumber().equals(receiveAccount)){
+                    if(receiveDto.getMyAccountNumber().equals(receiveAccount)){
                         if(sendDto == receiveDto) return "equalAccount";
 
                         sendDto.setMoney(sendDto.getMoney() - sendMoney);
                         receiveDto.setMoney(receiveDto.getMoney() + sendMoney);
 
-                        boolean sendLog = accountLogCreate (accountNumber ,"출금", - sendMoney, sendDto.getMoney() );
-                        boolean receiveLog = accountLogCreate (receiveAccount ,"입금" , + sendMoney, receiveDto.getMoney() );
+                        boolean sendLog = accountLogCreate (accountNumber ,"계좌이체_출금", - sendMoney, sendDto.getMoney() );
+                        boolean receiveLog = accountLogCreate (receiveAccount ,"계좌이체_입금" , + sendMoney, receiveDto.getMoney() );
                         return sendLog&&receiveLog ? "success" : "maxAccountLog" ;
                     }   // if end
                 }   // for end
@@ -130,23 +130,14 @@ public class BankController {   // class BankController start
     // 계좌내역 출력 메소드
 
     public String accountLogPrint( String sendAccount, int password ) {
-        ArrayList<AccountLogDto> accountLogDB = accountLogDao.accountLogPrint();
+        ArrayList<AccountLogDto> accountLogDB = accountLogDao.accountLogArray();
         ArrayList<AccountDto> accountDB = accountDao.accountPrint();
         for (int i = 0 ; i < accountDB.size(); i++) {
             AccountDto dto = accountDB.get(i);
             if (dto.getMyAccountNumber().equals(sendAccount) && dto.getPassword() == (password)) { // 만약 account 배열이 존재하고 계좌번호와 비밀번호가 매개변수와 일치한다면?
-                String log = "";                // 출력해줄 String log 할당
-                for (int j = 0; j < accountLogDB.size(); j++) { // 로그 배열 순회
-                    AccountLogDto dtoLog = accountLogDB.get(j);         // 간소화
-                    if(dtoLog.getMyAccountNumber().equals( dto.getMyAccountNumber() ) ) { // account 로그와 account의 계좌번호가 같은가?
-                        if (dtoLog.getValueMoney() > 0) {                        // 출금인지 입금인지 판단하는 유효성 검사
-                            log += "[" + dtoLog.getNow() + "] " + dtoLog.getLogType() + " | +" + dtoLog.getValueMoney() + "원 | 잔액 : " + dtoLog.getBalance() + "원" + "\n";  // 입금이면 +
-                        } else {
-                            log += "[" + dtoLog.getNow() + "] " + dtoLog.getLogType() + " | " + dtoLog.getValueMoney() + "원 | 잔액 : " + dtoLog.getBalance() + "원" + "\n";   // 출금이면 -
-                        }
-                    }   // if end
-                }   // for j end
-                return log;     // log(입출금, 이체 내역 출력한 값) 값 반환
+                String result = accountLogDao.accountLogPrint( sendAccount );
+                if(result.isEmpty()) return "notExist";
+                return result;     // result(입출금, 이체 내역 출력한 값) 값 반환
             }   // if end
         }   // for end
         return "error";
