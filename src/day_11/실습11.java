@@ -20,7 +20,7 @@ public class 실습11 { // class start
         for (int i = 0; i < fruits.size(); i++) {
             String fruit = fruits.get(i);
             System.out.println("인덱스 " + i + ": "+ fruit);
-        }
+        }   // for i end
 
         // 3.
 
@@ -44,39 +44,52 @@ public class 실습11 { // class start
 
         // 6.
 
+        // 객체 생성
         Book book1 = new Book("나는코딩" , "신코딩");
         Book book2 = new Book("나는자바" , "박자바");
         Book book3 = new Book("나는씨쁠" , "이씨쁠");
 
+        // Book ArrayList 생성
         ArrayList< Book > library = new ArrayList<>();
 
+        // library ArrayList 에 객체들 넣어주기
         library.add(book1);
         library.add(book2);
         library.add(book3);
 
+        // 향상된 for문으로 순회하면서 출력
         for( Book book : library){
             System.out.println("책제목 : " + book.title + " 저자 : " + book.author );
-        }
+        }   // for end
 
         // 7.
-
+        // 입력값 scan 정의
         Scanner scan = new Scanner(System.in);
 
+        // ArrayList 생성
         ArrayList< String > scanInput = new ArrayList<>();
 
+        // 무한반복 for문
         for( ; ; ){
+            // scan 받기
             System.out.print("SCAN값 입력하기 : ");
             String input =  scan.next();
+
+            // 종료라면 출력하고 break;
             if(input.equals("종료")) {
                 System.out.println(scanInput);
                 break;
             }   // if end
+
+            // 종료가 아니라면 scan값 add
             scanInput.add(input);
+
         }   // 무한루프 for
 
         // 8.
         ArrayList< String > subjects = new ArrayList<>();
         subjects.add("국어"); subjects.add("수학"); subjects.add("사회"); subjects.add("과학");
+        // set은 해당 인덱스를 바꿔줌
         subjects.set( 1 , "영어" );
         System.out.println(subjects);
 
