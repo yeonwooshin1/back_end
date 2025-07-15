@@ -2,9 +2,9 @@ package project.controller;
 
 public class MemberController { // class MemberController start
     // 멤버변수
-    private static int logInMno;
+    private int logInMno;
 
-    public static int getLogInMno(){
+    public int getLogInMno(){
         return logInMno ;
     }
 

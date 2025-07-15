@@ -12,7 +12,7 @@ public class BookInfoDao {
         return bookInfodao;
     }
 
-    // bookinfoDB 객체 생성
+    // bookInfoDB 객체 생성
     private ArrayList<BookInfoDto> bookinfoDB = new ArrayList<>();
 
 }
