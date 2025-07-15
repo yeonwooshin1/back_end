@@ -40,7 +40,7 @@ public class MemberDao {
 
     public HashMap<String, Object> getUserInfo(String memberId, String memberPwd) {
         HashMap<String, Object> map = new HashMap<>();
-        int result = 0;
+        int result = 3;
         int memberNo = 0;
         String memberName = "";
         for( MemberDto i : memberDB){
@@ -50,11 +50,11 @@ public class MemberDao {
                 if(i.getMemberId().equals("admin")) {
                     result = 1;
                     memberNo = -1;  // 관리자면 -1
+                    break;
                 } else {
                     result = 2;
                 }
-            } else {
-                result = 3;
+                break;
             }
         }
         map.put("result", result);

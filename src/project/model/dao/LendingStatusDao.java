@@ -25,7 +25,7 @@ public class LendingStatusDao {
 
         // 도서 번호가 있는지 확인하는 유효성 검사
         for(LendingStatusDto dto : lendingStatusDB) {
-            if (dto.getBookLog() == bookLogInput) {
+            if (dto.getBookLog() == bookLogInput && dto.getDueDate() == null) {
                 return false;
             }
         }
