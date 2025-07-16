@@ -1,7 +1,6 @@
-package project.view;   // package
+package projectYeonwoo.view;   // package
 
 import projectYeonwoo.controller.MemberController;
-import projectYeonwoo.view.LogInView;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -71,7 +70,7 @@ public class LogOutView {   // class start  // 로그인 전 view
 
         if (result == 1) {
             System.out.println(memberName + "님, 환영합니다! 회원님은 현재 관리자 권한입니다.");
-            projectYeonwoo.view.LogInView.getInstance().index();
+            LogInView.getInstance().index();
         } else if (result == 2) {
             System.out.println(memberName + "님, 환영합니다! 회원님은 일반 사용자 권한 입니다.");
             LogInView.getInstance().index();

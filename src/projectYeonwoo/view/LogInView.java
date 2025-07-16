@@ -1,4 +1,4 @@
-package project.view;
+package projectYeonwoo.view;
 
 import projectYeonwoo.controller.BookInfoController;
 import projectYeonwoo.controller.BookListController;
@@ -7,7 +7,6 @@ import projectYeonwoo.controller.MemberController;
 import projectYeonwoo.model.dto.BookInfoDto;
 import projectYeonwoo.model.dto.BookListDto;
 import projectYeonwoo.model.dto.LendingStatusDto;
-import projectYeonwoo.view.LogOutView;
 
 import java.util.ArrayList;
 import java.util.Scanner;

@@ -1,6 +1,5 @@
-package project.controller;
+package projectYeonwoo.controller;
 
-import projectYeonwoo.controller.MemberController;
 import projectYeonwoo.model.dao.BookInfoDao;
 import projectYeonwoo.model.dto.BookInfoDto;
 
@@ -20,7 +19,7 @@ public class BookInfoController {
 
     BookInfoDao bookInfoDao = BookInfoDao.getInstance();
 
-    projectYeonwoo.controller.MemberController controller = MemberController.getInstance();   // 컨트롤러 가져오기
+    MemberController controller = MemberController.getInstance();   // 컨트롤러 가져오기
 
     // 메소드
     // 도서 등록 메소드

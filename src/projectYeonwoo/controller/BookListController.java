@@ -1,4 +1,4 @@
-package project.controller;
+package projectYeonwoo.controller;
 
 import projectYeonwoo.model.dao.BookListDao;
 import projectYeonwoo.model.dto.BookListDto;

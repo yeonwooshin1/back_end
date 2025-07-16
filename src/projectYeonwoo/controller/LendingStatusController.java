@@ -1,7 +1,5 @@
-package project.controller;
+package projectYeonwoo.controller;
 
-import projectYeonwoo.controller.BookInfoController;
-import projectYeonwoo.controller.MemberController;
 import projectYeonwoo.model.dao.LendingStatusDao;
 import projectYeonwoo.model.dto.LendingStatusDto;
 
@@ -21,8 +19,8 @@ public class LendingStatusController {
 
     // 싱글톤 가져오기
     LendingStatusDao lendingStatusDao = LendingStatusDao.getInstance();
-    projectYeonwoo.controller.MemberController memberController = MemberController.getInstance();   // 회원번호 컨트롤러 가져오기
-    projectYeonwoo.controller.BookInfoController bookInfoController = BookInfoController.getInstance();   // 책이름 컨트롤러 가져오기
+    MemberController memberController = MemberController.getInstance();   // 회원번호 컨트롤러 가져오기
+    BookInfoController bookInfoController = BookInfoController.getInstance();   // 책이름 컨트롤러 가져오기
 
     // 메소드 만들기
     // 등록
