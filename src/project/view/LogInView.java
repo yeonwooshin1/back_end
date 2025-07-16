@@ -225,8 +225,7 @@ public class LogInView {
     }
 
     public void logOut(){
-        int memberNo = memberController.getLogInMno();
-        memberNo = 0;
+        memberController.
         System.out.println("[안내] 로그아웃 되었습니다.");
         LogOutView.getInstance().index();
     }

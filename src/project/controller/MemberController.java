@@ -38,5 +38,10 @@ public class MemberController { // class MemberController start
         logInMno = (int) map.get("memberNo");
         return map;
     }
+    // 메소드 로그아웃
+    public void logOut(){
+        logInMno = 0;
+    }
+
 
 }   // class MemberController end
