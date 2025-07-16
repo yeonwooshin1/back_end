@@ -1,6 +1,6 @@
 package project.model.dao;
 
-import projectYeonwoo.model.dto.BookListDto;
+import project.model.dto.BookListDto;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,6 @@
 package project.model.dao;
 
-import projectYeonwoo.model.dto.LendingStatusDto;
+import project.model.dto.LendingStatusDto;
 
 import java.util.ArrayList;
 

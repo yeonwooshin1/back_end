@@ -12,7 +12,8 @@ public class MemberDto {    // class MemberDto start
     public MemberDto(){}
 
     // 회원가입 생성자
-    public MemberDto(String memberId, String memberPwd, String memberTel, String memberName) {
+    public MemberDto( int memberNo ,String memberId, String memberPwd, String memberTel, String memberName) {
+        this.memberNo = memberNo;
         this.memberId = memberId;
         this.memberPwd = memberPwd;
         this.memberTel = memberTel;

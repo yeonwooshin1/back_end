@@ -1,13 +1,12 @@
 package project.view;
 
-import projectYeonwoo.controller.BookInfoController;
-import projectYeonwoo.controller.BookListController;
-import projectYeonwoo.controller.LendingStatusController;
-import projectYeonwoo.controller.MemberController;
-import projectYeonwoo.model.dto.BookInfoDto;
-import projectYeonwoo.model.dto.BookListDto;
-import projectYeonwoo.model.dto.LendingStatusDto;
-import projectYeonwoo.view.LogOutView;
+import project.controller.BookInfoController;
+import project.controller.BookListController;
+import project.controller.LendingStatusController;
+import project.controller.MemberController;
+import project.model.dto.BookInfoDto;
+import project.model.dto.BookListDto;
+import project.model.dto.LendingStatusDto;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -36,26 +35,44 @@ public class LogInView {
     // Scanner
     Scanner scan = new Scanner(System.in);
 
-    // 출력 부분
-
-    public void index() {
-        for (; ; ) {
-            System.out.println("============================= 도서관 메뉴 ==============================");
-            System.out.println(" 1.도서등록 | 2.도서대출 | 3.도서반납 | 4.내대출현황 | 5.도서목록 | 6.로그아웃 ");
-            System.out.println("======================================================================");
-
+    // 로그인 후 메뉴 (일반 회원)
+    public void userlogin(){
+        for( ; ; ) {
+            System.out.println("=========== 로그인 후 메뉴 (일반회원) ===========");
+            System.out.println("  1.도서등록 | 2.도서대출 | 3.도서반납 | 4.내대출현황 | 5.도서목록 | 6.로그아웃");
+            System.out.println("=============================================");
+            System.out.println("선택 > ");
             int choose = scan.nextInt();
+            if( choose == 1 ){
+                System.out.println("[경고] 해당 메뉴는 관리자만 접근 가능합니다.");
+                userlogin();
+            }
+            else if (choose == 2 ) loanBook();
+            else if (choose == 3 ) returnBook();
+            else if (choose == 4 ) bookState();
+            else if (choose == 5 ) bookList();
+            else if (choose == 6 ) logOut();
+        } // for e
+    } // func e
 
-            if (choose == 1) addBook();
-            else if (choose == 2) loanBook();
-            else if (choose == 3) returnBook();
-            else if (choose == 4) bookState();
-            else if (choose == 5) bookList();
-            else if(choose == 6)  logOut();
+    // 로그인 후 메뉴 (관리자 모드)
+    public void adminlogin(){
 
-            else System.out.println("[경고] 다시 선택해주십시오. ");
-        }   // for end
-    }
+        for( ; ; ) {
+            System.out.println("=========== 로그인 후 메뉴 (관리자) ===========");
+            System.out.println("  1.도서등록 | 2.도서대출 | 3.도서반납 | 4.내대출현황 | 5.도서목록 | 6.로그아웃");
+            System.out.println("=============================================");
+            System.out.println("선택 > ");
+            int choose = scan.nextInt();
+            if( choose == 1 ) addBook();
+            else if (choose == 2 ) loanBook();
+            else if (choose == 3 ) returnBook();
+            else if (choose == 4 ) bookState();
+            else if (choose == 5 )bookList();
+            else if (choose == 6 ) logOut();
+        } // for e
+    } // func e
+
 
     // 도서 등록
 
@@ -85,6 +102,11 @@ public class LogInView {
         System.out.print("대출할 도서 번호 : ");
         int bookLogInput = scan.nextInt();
 
+        boolean result = lendingStatusController.loanBook(bookLogInput);
+
+        if (result) System.out.println("[안내] '" +  "' 도서 대출이 완료되었습니다.");
+        else System.out.println("[경고] 도서 대출에 실패하였습니다. 다시 시도해주세요.");
+
         String bookName = null;
         ArrayList<BookInfoDto> bookInfoDB = bookInfoController.bookInfoList();
         ArrayList<BookListDto> booklistDB = bookListController.bookList();
@@ -102,10 +124,7 @@ public class LogInView {
             return;
         }
 
-        boolean result = lendingStatusController.loanBook(bookLogInput);
 
-        if (result) System.out.println("[안내] '" + bookName + "' 도서 대출이 완료되었습니다.");
-        else System.out.println("[경고] 도서 대출에 실패하였습니다. 다시 시도해주세요.");
     }
 
 
@@ -144,93 +163,86 @@ public class LogInView {
     // 내대출현황
 
     public void bookState() {
-        ArrayList<LendingStatusDto> lendingStatusDB = lendingStatusController.bookState();
-        ArrayList<BookInfoDto> bookInfoDB = bookInfoController.bookInfoList();
-        ArrayList<BookListDto> booklistDB = bookListController.bookList();
 
-        int count = 1;
+        ArrayList<project.model.dto.LendingStatusDto> lendingStatusDB = lendingStatusController.bookState();
+        ArrayList<project.model.dto.BookInfoDto> bookInfoDB = bookInfoController.bookInfoList();
+        ArrayList<project.model.dto.BookListDto> booklistDB = bookListController.bookList();
+
         int who = bookInfoController.who();
 
-        for (LendingStatusDto lend : lendingStatusDB) {
 
-            String lendPerson = null;
+        for (int i = 0; i < lendingStatusDB.size(); i++) {
+            LendingStatusDto lendingStatus = lendingStatusDB.get(i);
             int bookNo = 0;
-            for (BookListDto list : booklistDB) {
-                if (list.getBookLog() == lend.getBookLog()) {
-                    bookNo = list.getBookNo();
+            for (int j = 0; j < booklistDB.size(); j++) {
+                BookListDto bookList = booklistDB.get(j);
+                if (bookList.getBookLog() == lendingStatus.getBookLog()) {
+                    bookNo = bookList.getBookNo();
 
-                    break;                      // bookNo를 찾았으면 탈출
-                }
-            }
-            if(bookNo == 0) continue;          // 매칭 목록이 없으면 다음 레코드
-
-            BookInfoDto bookInfo = null;
-            for (BookInfoDto info : bookInfoDB) {
-                if (info.getBookNo() == bookNo) {
-                    bookInfo = info;
                     break;
                 }
             }
-            if (bookInfo == null) continue;         // 책 정보가 없으면 건너뛰기
-
-            //--//
-
-            if(who == -1){
-                System.out.println("[" + lend.getLoanLog() + "] " + bookInfo.getBookName() + " | " + bookInfo.getBookAuthor() + " | 대출일: " + lend.getLoanDate()
-                        + " | 반납일: " + (lend.getDueDate() == null ? "미반납" : lend.getDueDate()));    // 관리자
+            BookInfoDto bookinfo2 = null;
+            for (int h = 0; h < bookInfoDB.size(); h++) {
+                BookInfoDto bookinfo = bookInfoDB.get(h);
+                if (bookNo == bookinfo.getBookNo()) {
+                    bookinfo2 = bookinfo;
+                    break;
+                }
             }
+            if(bookinfo2 == null) continue;
 
-            else if (who == lend.getMemberNo() && lend.getDueDate() == null) {
-                System.out.println("[" + count++ + "] " + bookInfo.getBookName() + " | " + bookInfo.getBookAuthor()
-                        + " | 대출일: " + lend.getLoanDate());     // 회원
+            if (who == -1) {
+                System.out.println("[경고] 관리자입니다");
+            } else {
+                System.out.println("[" + lendingStatus.getLoanLog() + "] " + bookinfo2.getBookName() + " | " + bookinfo2.getBookAuthor() + " | 대출일: " +
+                        lendingStatus.getLoanDate() + " | 반납일: ");
             }
-
         }
-        if(who != -1 && count == 1) System.out.println("[안내] 현재 대출 중인 도서가 없습니다.");  // 회원이고 출력이 없었다면 없다고 말하기
     }
 
     // 도서목록
 
     public void bookList() {
-        ArrayList<LendingStatusDto> lendingStatusDB = lendingStatusController.bookState();
-        ArrayList<BookInfoDto> bookInfoDB = bookInfoController.bookInfoList();
-        ArrayList<BookListDto> booklistDB = bookListController.bookList();
+        ArrayList<project.model.dto.LendingStatusDto> lendingStatusDB = lendingStatusController.bookState();
+        ArrayList<project.model.dto.BookInfoDto> bookInfoDB = bookInfoController.bookInfoList();
+        ArrayList<project.model.dto.BookListDto> booklistDB = bookListController.bookList();
 
-        int count = 0;
+        // 도서 목록 출력
 
-        for(BookListDto list : booklistDB){
+        for (int i = 0; i < booklistDB.size(); i++) {
+            BookListDto bookList = booklistDB.get(i);
             boolean onLoan = false;          // 대출 여부 플래그
-            for (LendingStatusDto lending : lendingStatusDB){
-                if(lending.getBookLog() == list.getBookLog()     // 같은 책 로그이고
-                        && lending.getDueDate() == null){        // 아직 반납 안 됨
+            for (int j = 0; j <= lendingStatusDB.size(); j++) {
+                LendingStatusDto lendingStatus = lendingStatusDB.get(j);
+                if (lendingStatus.getBookLog() == bookList.getBookLog() && lendingStatus.getDueDate() == null) {
                     onLoan = true;
-                    break;                                        // 더 볼 필요 없음
                 }
             }
-            if(onLoan) continue;          // 빌려 간 상태면 이번 책은 건너뛰기
-
+            if (onLoan == true) {
+                continue;
+            }
             String bookName = "";
             String bookAuthor = "";
 
-            for(BookInfoDto info : bookInfoDB){
-                if(info.getBookNo() == list.getBookNo()){
-                    bookName = info.getBookName();
-                    bookAuthor = info.getBookAuthor();
-                    count = 1;
+            for (int h = 0; h < bookInfoDB.size(); h++) {
+                BookInfoDto bookInfo = bookInfoDB.get(h);
+                if (bookInfo.getBookNo() == bookList.getBookNo()) {
+                    bookName = bookInfo.getBookName();
+                    bookAuthor = bookInfo.getBookAuthor();
                     break;
                 }
             }
-            System.out.println("[" + list.getBookLog() + "] " + bookName + " | " + bookAuthor);
-        }
-        if(count == 0) System.out.println("[안내] 도서목록이 없습니다.");
-    }
+            System.out.println("[" + bookList.getBookLog() + "] " + bookName + " | " + bookAuthor);
 
+        }
+    }
+    // 로그아웃
     public void logOut(){
         memberController.logOut();
         System.out.println("[안내] 로그아웃 되었습니다.");
         LogOutView.getInstance().index();
-
-    }
+    } // func e
 
 }
 

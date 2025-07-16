@@ -1,7 +1,7 @@
 package project.controller;
 
-import projectYeonwoo.model.dao.BookListDao;
-import projectYeonwoo.model.dto.BookListDto;
+import project.model.dao.BookListDao;
+import project.model.dto.BookListDto;
 
 import java.util.ArrayList;
 

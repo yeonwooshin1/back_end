@@ -225,10 +225,8 @@ public class LogInView {
     }
 
     public void logOut(){
-        memberController.logOut();
         System.out.println("[안내] 로그아웃 되었습니다.");
-        LogOutView.getInstance().index();
-
+        memberController.logOut();
     }
 
 }

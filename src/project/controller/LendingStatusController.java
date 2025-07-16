@@ -1,9 +1,8 @@
 package project.controller;
 
-import projectYeonwoo.controller.BookInfoController;
-import projectYeonwoo.controller.MemberController;
-import projectYeonwoo.model.dao.LendingStatusDao;
-import projectYeonwoo.model.dto.LendingStatusDto;
+import project.model.dao.LendingStatusDao;
+import project.model.dao.MemberDao;
+import project.model.dto.LendingStatusDto;
 
 import java.util.ArrayList;
 
@@ -21,13 +20,13 @@ public class LendingStatusController {
 
     // 싱글톤 가져오기
     LendingStatusDao lendingStatusDao = LendingStatusDao.getInstance();
-    projectYeonwoo.controller.MemberController memberController = MemberController.getInstance();   // 회원번호 컨트롤러 가져오기
-    projectYeonwoo.controller.BookInfoController bookInfoController = BookInfoController.getInstance();   // 책이름 컨트롤러 가져오기
+    MemberDao memberDao = MemberDao.getInstance();   // 회원번호 컨트롤러 가져오기
+
 
     // 메소드 만들기
     // 등록
     public boolean loanBook( int bookLogInput ){
-        int memberNo = memberController.getLogInMno();
+        int memberNo = memberDao.getLogInMno();
 
         boolean result = false;
         result = lendingStatusDao.loanBook(bookLogInput , memberNo);
@@ -37,7 +36,7 @@ public class LendingStatusController {
 
     // 반납
     public boolean returnBook( int bookLogInput ){
-        int memberNo = memberController.getLogInMno();
+        int memberNo = memberDao.getLogInMno();
         boolean result = false;
         result = lendingStatusDao.returnBook(bookLogInput , memberNo );
 

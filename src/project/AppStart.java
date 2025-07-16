@@ -1,6 +1,6 @@
 package project;
 
-import projectYeonwoo.view.LogOutView;
+import project.view.LogOutView;
 
 public class AppStart { // class start
     public static void main(String[] args) { // main start

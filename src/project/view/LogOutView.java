@@ -1,9 +1,7 @@
 package project.view;   // package
 
-import projectYeonwoo.controller.MemberController;
-import projectYeonwoo.view.LogInView;
+import project.controller.MemberController;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class LogOutView {   // class start  // 로그인 전 view
@@ -21,7 +19,7 @@ public class LogOutView {   // class start  // 로그인 전 view
 
     // 싱글톤 가져오기
     MemberController controller = MemberController.getInstance();   // MemberController class 가져오기
-
+    LogInView logInView = LogInView.getInstance();
 
     // 로그인 전 화면 view
 
@@ -48,7 +46,7 @@ public class LogOutView {   // class start  // 로그인 전 view
         System.out.print("이름 : ");         String nameInput = scan.next();
         System.out.print("연락처 : ");       String telInput = scan.next();
 
-        int result = controller.signup(idInput , pwInput , nameInput , telInput);   // 매개변수 id , pw , name , telNumber
+        int result = controller.getMember(idInput , pwInput , nameInput , telInput);   // 매개변수 id , pw , name , telNumber
 
         if(result == 1) System.out.println("[안내] 관리자 계정이 등록되었습니다.");
         else if(result == 2) System.out.println("[안내] 회원가입이 완료되었습니다.");
@@ -57,28 +55,23 @@ public class LogOutView {   // class start  // 로그인 전 view
     }   // choose 1 func end
 
 
-    // 로그인 view
-
-    public void login(){
+    // 로그인 화면
+    public void  login(){
         System.out.println("--- 로그인 ---");
-        System.out.print("아이디 : ");       String idInput =  scan.next();
-        System.out.print("비밀번호 : ");      String pwInput = scan.next();
+        System.out.println("아이디 : ");       String memberId = scan.next();
+        System.out.println("비밀번호 : ");      String memberPwd = scan.next();
+        int result1 = controller.login( memberId ,memberPwd );
+        if( result1 == -1 ){
+            System.out.println("[안내] 관리자 로그인 성공 ");
+            logInView.adminlogin();
+        } else if (result1 == 2) {
+            System.out.println("[안내]일반 회원 로그인 성공 ");
+            logInView.userlogin();
 
-        HashMap<String, Object> login = controller.login(idInput, pwInput); // hashMap< String , Object >
-
-        int result = (int) login.get("result");                          //
-        String memberName = login.get("memberName").toString();
-
-        if (result == 1) {
-            System.out.println(memberName + "님, 환영합니다! 회원님은 현재 관리자 권한입니다.");
-            projectYeonwoo.view.LogInView.getInstance().index();
-        } else if (result == 2) {
-            System.out.println(memberName + "님, 환영합니다! 회원님은 일반 사용자 권한 입니다.");
-            LogInView.getInstance().index();
-
-        } else {
-            System.out.println("회원 정보가 없습니다. 아이디와 비밀번호를 다시 입력해 주세요.");
+        }else if (result1 == 3 ){
+            System.out.println("[경고] 아이디와 비밀번호를 확인해주세요. ");
         }
-    }
+    } // func e
+
 
 }
