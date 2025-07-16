@@ -1,4 +1,4 @@
-package project.model.dto;  // package
+package teamProject.model.dto;  // package
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

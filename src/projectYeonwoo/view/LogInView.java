@@ -224,6 +224,8 @@ public class LogInView {
         if(count == 0) System.out.println("[안내] 도서목록이 없습니다.");
     }
 
+    // 로그아웃 메소드
+
     public void logOut(){
         System.out.println("[안내] 로그아웃 되었습니다.");
         memberController.logOut();

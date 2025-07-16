@@ -1,6 +1,6 @@
-package project.view;   // package
+package teamProject.view;   // package
 
-import project.controller.MemberController;
+import teamProject.controller.MemberController;
 
 import java.util.Scanner;
 

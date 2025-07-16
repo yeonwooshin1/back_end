@@ -1,8 +1,8 @@
-package project.controller;
+package teamProject.controller;
 
-import project.model.dao.LendingStatusDao;
-import project.model.dao.MemberDao;
-import project.model.dto.LendingStatusDto;
+import teamProject.model.dao.LendingStatusDao;
+import teamProject.model.dao.MemberDao;
+import teamProject.model.dto.LendingStatusDto;
 
 import java.util.ArrayList;
 

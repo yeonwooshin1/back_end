@@ -1,4 +1,4 @@
-package project.model.dto;  // package
+package teamProject.model.dto;  // package
 
 public class BookListDto {  // class BookListDto start
     // 멤버변수

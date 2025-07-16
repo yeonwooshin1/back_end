@@ -1,12 +1,12 @@
-package project.view;
+package teamProject.view;
 
-import project.controller.BookInfoController;
-import project.controller.BookListController;
-import project.controller.LendingStatusController;
-import project.controller.MemberController;
-import project.model.dto.BookInfoDto;
-import project.model.dto.BookListDto;
-import project.model.dto.LendingStatusDto;
+import teamProject.controller.BookInfoController;
+import teamProject.controller.BookListController;
+import teamProject.controller.LendingStatusController;
+import teamProject.controller.MemberController;
+import teamProject.model.dto.BookInfoDto;
+import teamProject.model.dto.BookListDto;
+import teamProject.model.dto.LendingStatusDto;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -164,9 +164,9 @@ public class LogInView {
 
     public void bookState() {
 
-        ArrayList<project.model.dto.LendingStatusDto> lendingStatusDB = lendingStatusController.bookState();
-        ArrayList<project.model.dto.BookInfoDto> bookInfoDB = bookInfoController.bookInfoList();
-        ArrayList<project.model.dto.BookListDto> booklistDB = bookListController.bookList();
+        ArrayList<teamProject.model.dto.LendingStatusDto> lendingStatusDB = lendingStatusController.bookState();
+        ArrayList<teamProject.model.dto.BookInfoDto> bookInfoDB = bookInfoController.bookInfoList();
+        ArrayList<teamProject.model.dto.BookListDto> booklistDB = bookListController.bookList();
 
         int who = bookInfoController.who();
 
@@ -204,9 +204,9 @@ public class LogInView {
     // 도서목록
 
     public void bookList() {
-        ArrayList<project.model.dto.LendingStatusDto> lendingStatusDB = lendingStatusController.bookState();
-        ArrayList<project.model.dto.BookInfoDto> bookInfoDB = bookInfoController.bookInfoList();
-        ArrayList<project.model.dto.BookListDto> booklistDB = bookListController.bookList();
+        ArrayList<teamProject.model.dto.LendingStatusDto> lendingStatusDB = lendingStatusController.bookState();
+        ArrayList<teamProject.model.dto.BookInfoDto> bookInfoDB = bookInfoController.bookInfoList();
+        ArrayList<teamProject.model.dto.BookListDto> booklistDB = bookListController.bookList();
 
         // 도서 목록 출력
 
