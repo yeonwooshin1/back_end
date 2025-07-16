@@ -38,29 +38,33 @@ public class MemberDao {
 
     // 로그인
 
-    public HashMap<String, Object> getUserInfo(String memberId, String memberPwd) {
+    public HashMap<String, Object> login(String memberId, String memberPwd) {
+
+        // HashMap<String , Object> => String : 문자열 변수명 , Object => 모든객체
         HashMap<String, Object> map = new HashMap<>();
-        int result = 3;
-        int memberNo = 0;
-        String memberName = "";
+
+        int result = 3;             // 초기값 지정
+        int memberNo = 0;           // 초기값 지정
+        String memberName = "";     // 초기값 지정
+
         for( MemberDto i : memberDB){
             if(i.getMemberId().equals(memberId) && i.getMemberPwd().equals(memberPwd)){
-                memberNo = i.getMemberNo();
-                memberName = i.getMemberName();
-                if(i.getMemberId().equals("admin")) {
-                    result = 1;
-                    memberNo = -1;  // 관리자면 -1
+                memberNo = i.getMemberNo();             // 일치한 회원번호 넣기
+                memberName = i.getMemberName();         // 일치한 이름 넣기
+                if(i.getMemberId().equals("admin")) {   // admin 이라면?
+                    result = 1;                         // 관리자 result = 1
+                    memberNo = -1;  // 관리자면 -1        // 관리자는 -1
                     break;
                 } else {
-                    result = 2;
+                    result = 2;                         // 일반사용자는 result = 2
                 }
                 break;
             }
         }
-        map.put("result", result);
-        map.put("memberNo", memberNo);
-        map.put("memberName", memberName);
-        return map;
+        map.put("result", result);                      // result 라는 변수명엔 result를
+        map.put("memberNo", memberNo);                  // memberNo 라는 변수명엔 memberNo를
+        map.put("memberName", memberName);              // memberName 라는 변수명에는 memberName를 map에 .add
+        return map;                                     // map 반환
     }
 
 

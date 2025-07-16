@@ -33,11 +33,12 @@ public class MemberController { // class MemberController start
     // 메소드 - 로그인
     public HashMap<String, Object> login (String memberId , String memberPwd ){
 
-        HashMap<String, Object> map = memberDao.getUserInfo (memberId, memberPwd );
+        HashMap<String, Object> map = memberDao.login (memberId, memberPwd );
 
-        logInMno = (int) map.get("memberNo");
-        return map;
+        logInMno = (int) map.get("memberNo");       // 관리자면 -1 , 일반 사용자면 MemberNo를 logInMno 전역 변수에 대입
+        return map;                                 // map 반환
     }
+
     // 메소드 로그아웃
     public void logOut(){
         logInMno = 0;
