@@ -50,7 +50,7 @@ public class LogInView {
             else if (choose == 3) returnBook();
             else if (choose == 4) bookState();
             else if (choose == 5) bookList();
-            else if(choose == 6)  logOut();
+            else if(choose == 6)  { logOut(); break;}
 
             else System.out.println("[경고] 다시 선택해주십시오. ");
         }   // for end

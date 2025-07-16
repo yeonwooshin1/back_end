@@ -42,7 +42,6 @@ public class MemberController { // class MemberController start
     // 메소드 로그아웃
     public void logOut(){
         logInMno = 0;
-        LogOutView.getInstance().index();
     }
 
 
