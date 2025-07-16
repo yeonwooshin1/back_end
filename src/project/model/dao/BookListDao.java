@@ -12,6 +12,29 @@ public class BookListDao {
         return bookListDao;
     }
 
+    // bookLog 추가
+    int count;
+
     // booklistDB 객체 생성
     private ArrayList<BookListDto> booklistDB = new ArrayList<>();
+
+    // 메소드
+
+    // 등록
+    public void addBookNo( int bookNo ){
+        BookListDto bookListDto = new BookListDto( bookNo );
+
+        count++;              // count를 1 증가
+        bookListDto.setBookLog(count);
+
+        booklistDB.add(bookListDto);
+
+    }
+
+    // 배열 출력
+    public ArrayList<BookListDto> bookList(){
+        return booklistDB;
+    }
+
+
 }

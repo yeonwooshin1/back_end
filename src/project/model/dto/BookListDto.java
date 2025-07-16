@@ -10,8 +10,7 @@ public class BookListDto {  // class BookListDto start
 
     // 책 대출 생성자
 
-    public BookListDto(int bookLog, int bookNo) {
-        this.bookLog = bookLog;
+    public BookListDto( int bookNo) {
         this.bookNo = bookNo;
     }   // func 책 대출 생성자 end
 

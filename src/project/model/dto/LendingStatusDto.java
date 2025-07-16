@@ -1,5 +1,8 @@
 package project.model.dto;  // package
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class LendingStatusDto { // class LendingStatusDto start
     // 멤버변수
     private int loanLog;        // 대출코드
@@ -11,24 +14,17 @@ public class LendingStatusDto { // class LendingStatusDto start
     private int memberNo;       // 회원 코드 ( MemberDto )
 
     // 생성자
-    LendingStatusDto(){}
+    public LendingStatusDto(){}
 
     // 대출 시작일 생성자
-    public LendingStatusDto(String loanDate, int loanLog, int bookLog, int memberNo) {
-        this.loanDate = loanDate;
-        this.loanLog = loanLog;
+    public LendingStatusDto(int bookLog , int memberNo) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        loanDate = formatter.format( LocalDateTime.now() ) ;
         this.bookLog = bookLog;
         this.memberNo = memberNo;
+
     }
 
-    // 대출 종료일 생성자
-
-    public LendingStatusDto( int bookLog, int memberNo, int loanLog , String dueDate ) {
-        this.dueDate = dueDate;
-        this.bookLog = bookLog;
-        this.memberNo = memberNo;
-        this.loanLog = loanLog;
-    }
 
     // 모든 생성자
 
@@ -39,6 +35,13 @@ public class LendingStatusDto { // class LendingStatusDto start
         this.bookLog = bookLog;
         this.memberNo = memberNo;
     }
+
+    // 반납 메소드
+    public void setDueDate() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        dueDate = formatter.format( LocalDateTime.now() ) ;
+    }
+
 
     // setter getter
 
@@ -63,9 +66,6 @@ public class LendingStatusDto { // class LendingStatusDto start
         return dueDate;
     }
 
-    public void setDueDate(String dueDate) {
-        this.dueDate = dueDate;
-    }
 
     public int getBookLog() {
         return bookLog;
