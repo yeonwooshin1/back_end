@@ -62,7 +62,7 @@ public class inheritance {
     public static void main(String[] args) {
         A a = new B("홍길동",112);
         a.print();
-        //  System.out.println(a.level); --> 불가능 //  예시 3번
+        //  System.out.println(a.age); --> 불가능 //  예시 3번
 
         B b = new B("홍길동" , 1);
     }
