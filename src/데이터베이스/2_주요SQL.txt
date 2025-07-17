@@ -12,7 +12,7 @@
             3) show tables;                         : *활성화*중인 데이터베이스내 모든 테이블 조회
         2. use
             1) use 데이터베이스명;                     : DB서버내 지정한 데이터베이스 활성화(사용)
-    [1] 데이터베이스 정의 : DDL
+    [1] 데이터베이스 정의어 : DDL
         1. create
             1) create database 데이터베이스명;         : 지정한 데이터베이스 생성
             2) create table 테이블명(                 : 지정한 테이블 생성
@@ -24,6 +24,40 @@
             2) drop database if exists 데이터베이스명; : 만약에 지정한 데이터베이스 존재하면 삭제
             3) drop table 테이블명;                   : 지정한 테이블 삭제
             4) drop table if exists 테이블명;         : 만약에 지정한 테이블 존재하면 삭제
+
+    [2] 데이터베이스 조작어 : DML , 키워드/문법에 대한 대소문자 구분 없다.
+        1. INSERT
+            1) 특정 속성에 값 대입하여 레코드 추가
+                insert into 테이블명( 속성명1, 속성명2) values( 값1, 값2 );
+            2) 모든 속성에 값 대입하여 레코드 추가 , 속성명 생략 가능
+                insert into 테이블명 values( 값1, 값2 );
+            3) 하나의 insert 로 여러개 레코드 추가
+                insert into 테이블명 values( 값1, 값2 ), (값1, 값2), (값1, 값2);
+            - 주의할점 : 각 속성의 제약조건에 따라 적절하게 값 대입
+        2. SELECT
+            1) 전체 속성에 레코드 조회 , *(와일드카드)
+                select * from 테이블명;
+            2) 특정 속성에 레코드 조회
+                select 속성명1 , 속성명2 from 테이블명
+            3) 특정 속성 조건에 따른 레코드 조회
+                select * from 테이블명 where [조건절];
+        3. UPDATE
+            1) 전체 레코드의 속성값 수정
+                update 테이블명 set 속성명 = 새로운값;
+            2) 특정 속성 조건에 따른 레코드의 속성값 수정
+                update 테이블명 set 속성명 = 새로운값 where [조건절];
+            3) 다수 속성값 수정
+                update 테이블명 set 속성명 = 새로운값 , 속성명 = 새로운값 where [조건절];
+        4. DELETE
+            1) 전체 레코드 삭제
+                delete from 테이블명;
+            2) 특정 속성 조건에 따른 레코드 삭제
+                delete from 테이블명 where [조건절];
+
+        * mysqlWorkbench safeMode(수정/삭제금지) : pc마다 첫 설치 이후 safeMode 켜져 있음.
+        -> 수정/삭제시 safeMode 끄기 : set SQL_SAFE_UPDATES = 0
+
+
 
 [데이터 타입] : 테이블내 속성들이 갖는/저장하는 자료들의 분류/타입/종류
     1. 정수
@@ -74,4 +108,4 @@
 
 [ 생성된 테이블 다이어그램 확인 ] : 여럿 테이블 간의 관계 확인
     #  workbench 상단메뉴 -> [database] -> [reverse engineer] -> stored conntion : local(선택) -> [next]
-    # -> 비밀번호입력 [next] -> 데이터베이스 선택 -> [next] -> [finish]은 동일하게 한다.
+    # -> 비밀번호입력 [next] -> 데이터베이스 선택 -> [next] -> [finish]
