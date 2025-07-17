@@ -1,7 +1,7 @@
-package project.controller;
+package teamProject.controller;
 
-import project.model.dao.MemberDao;
-import project.model.dto.MemberDto;
+import teamProject.model.dao.MemberDao;
+import teamProject.model.dto.MemberDto;
 
 
 public class MemberController { // class start

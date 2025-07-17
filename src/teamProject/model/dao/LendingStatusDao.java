@@ -1,6 +1,6 @@
-package project.model.dao;
+package teamProject.model.dao;
 
-import project.model.dto.LendingStatusDto;
+import teamProject.model.dto.LendingStatusDto;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,6 @@
-package project;
+package teamProject;
 
-import project.view.LogOutView;
+import teamProject.view.LogOutView;
 
 public class AppStart { // class start
     public static void main(String[] args) { // main start

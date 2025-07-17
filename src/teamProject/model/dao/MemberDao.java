@@ -1,6 +1,6 @@
-package project.model.dao;
+package teamProject.model.dao;
 
-import project.model.dto.MemberDto;
+import teamProject.model.dto.MemberDto;
 
 import java.util.ArrayList;
 

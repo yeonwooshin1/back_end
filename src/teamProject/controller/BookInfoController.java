@@ -1,9 +1,8 @@
-package project.controller;
+package teamProject.controller;
 
-import project.controller.MemberController;
-import project.model.dao.BookInfoDao;
-import project.model.dao.MemberDao;
-import project.model.dto.BookInfoDto;
+import teamProject.model.dao.BookInfoDao;
+import teamProject.model.dao.MemberDao;
+import teamProject.model.dto.BookInfoDto;
 
 import java.util.ArrayList;
 
@@ -22,7 +21,7 @@ public class BookInfoController {
     BookInfoDao bookInfoDao = BookInfoDao.getInstance();
     MemberDao memberDao = MemberDao.getInstance();
 
-    project.controller.MemberController controller = MemberController.getInstance();   // 컨트롤러 가져오기
+    teamProject.controller.MemberController controller = MemberController.getInstance();   // 컨트롤러 가져오기
 
     // 메소드
     // 도서 등록 메소드
