@@ -61,7 +61,7 @@ public class 실습12 { // class start
         SuperClass obj = new SubClass();
         // 문제 9) 3. obj.name과 obj.method()를 각각 호출했을 때의 결과를 확인하고, 왜 다른 결과가 나오는지 주석으로 설명하세요.
         System.out.println(obj.name);   obj.method();   // "상위" , "하위 메소드"
-        // 이유 : obj.method는 오버라이딩을 해주기 때문에 SubClass의 메소드를 실행해준다. 하지만 멤벼변수는 참조 변수의 타입 멤버변수를 보여줌. "상위"는 SuperClass(참조타입)의 멤버변수가 실행됨.
+        // 이유 : obj.method는 오버라이딩을 해주기 때문에 SubClass의 메소드를 실행해준다. 하지만 멤버변수는 해당 변수의 참조타입을 보여줌. "상위"는 SuperClass(참조타입)의 멤버변수가 실행됨.
 
         // 10.
         // 문제 10) 4. main 함수에서 Laptop 객체를 생성한 뒤,
