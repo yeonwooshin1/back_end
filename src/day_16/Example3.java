@@ -55,7 +55,7 @@ public class Example3 { // class start
             fin.read(bytes);
 
             // (5) new String( 바이트배열 ); 읽어온 바이트를 문자열로 변환 함수
-            System.out.println( new String( bytes ));
+            System.out.println( new String(bytes));
 
         } catch (FileNotFoundException e) {
             System.out.println("파일 또는 경로가 존재하지 않습니다." +e );
