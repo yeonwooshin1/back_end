@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class 실습15 { // class start
     public static void main(String[] args) {    // main start
+        /*
         // 1. 파일에 일기 쓰기
 
         String path = "src/day_16/diary.txt";   // 문자열 경로 = String path
@@ -44,26 +45,27 @@ public class 실습15 { // class start
             System.out.println(e);
         }   // catch end
 
+
+        */
         // 4. 방문 로그 누적 기록하기
+
         Scanner scan = new Scanner(System.in);          // Scanner 생성
         try {
-            FileOutputStream fout = new FileOutputStream("src/day_16/visit_log.txt");   // FileOutputStream 객체 생성 ("파일경로");
+            String paths = "src/day_16/visit_log.txt";
 
+            FileOutputStream fout = new FileOutputStream(paths , true);   // FileOutputStream 객체 생성 ("파일경로");
 
-            for( ; ; ){
-                System.out.print("이름 입력 : ");     String name = scan.next();      // 이름 입력 받기
+            System.out.print("이름 입력 : ");     String name = scan.next();      // 이름 입력 받기
 
-                if(name.equals("break")) break;                                     // break 입력시 for문 탈출
+            byte[] byteOut = (name+" 님이 방문했습니다. \n").getBytes();              // scan 받은 거 바이트로 변환
 
-                byte[] bytes = (name+" 님이 방문했습니다. \n").getBytes();              // scan 받은 거 바이트로 변환
-
-                fout.write(bytes);                  // 변수명.write(바이트 값); -> 바이트로 내보내기
-            }   // for end
+            fout.write(byteOut);                  // 변수명.write(바이트 값); -> 바이트로 내보내기
 
         } catch (Exception e) { // 예외처리 Exception
             System.out.println(e);
         }   // catch end
 
+        /*
         // 5. 연락처를 CSV 형식으로 파일에 저장하기
         try {
             System.out.print("이름 : ");          String name = scan.next();           // scan 값 받기
@@ -139,7 +141,7 @@ public class 실습15 { // class start
         } catch (Exception e) { // 예외처리 Exception
             System.out.println(e);
         }   // catch end
-
+        */
     }   // main end
 }   // class end
 
