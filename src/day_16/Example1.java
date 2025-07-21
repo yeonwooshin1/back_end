@@ -15,7 +15,7 @@ public class Example1 { // class start
                     1) 일반 예외 : 컴파일(실행)될 때 예외 처리 코드 여부 검사 예외
                         - 입출력 , 네트워크 , 파일 , JDBC(자바-DB 연동) , 주로 자바외부 통신 : Class.forName()
                         Thread.sleep()
-                    2) 실행 예외 : 컴파일(실행)될 때 예외 처리 코드 여부 검사 하지 않는 예외 , 개발자의 의존도(경험)가 크다.
+                    2) 실행 예외 : 컴파일(실행)될 때 예외 처리 코드 여부 검사 하지 않는 예외 , 개발자의 의존도(경험)가 크다. ( = 런타임 예외 )
 
                     * 웹/앱 라이브러리/프레임워크( Spring ) 자동 예외처리
                 4. 예외란
@@ -37,6 +37,17 @@ public class Example1 { // class start
                 catch { 예외클래스명 매개변수명 } { 지정한 예외 발생시 처리할 코드 }
                 catch { 예외클래스명 매개변수명 } { 지정한 예외 발생시 처리할 코드 }
                 finally { 예외 여부 상관없이 무조건 실행되는 코드 }
+
+                7. 신연우의 예외 팁
+                 1) throws 해줄 때
+                메소드에서 throws할 때 최상위 예외(Exception)을 줬을 경우
+                -> main 출력에서 써줄 때 하위 개념을 썼을 때 throws (= 던질 때) 예외처리가 되었지만 catch 에서 NullPointException 같은 거만 예외처리 해주면 다른 곳에서 컴파일이 안되어 오류가 뜰 수 있음.
+                메소드에서 throws할 때 하위 예외 (NullPointException) 같은 걸 throws 해주면 나머지 catch 에서 상위 예외나 같은 예외를 써주면 예외 처리가 좀 쉬워지는 경향이 있음.
+                    void work() throws IOException, ParseException 이런 예시코드가 있을 시
+                    2) throws 할 때 여러 예외를 던질 수 있다. 그 중 하나라도 throws가
+                // 그냥 읽어보기 : catch 절의 타입이 throws로 선언된 예외(throws 하위 요소 두 개라고 예를 잡으면 catch도 그 두 개) 또는 그 상위 클래스라면 컴파일 OK.
+                // 같은 타입을 “그대로” 써야 한다는 강제는 없지만, 너무 넓게(예: Exception) 잡으면 어떤 예외가 났는지 놓치기 쉬우니 상황에 맞춰 범위를 선택하세요. (catch 에서 오류 범위가 넓어져서)
+
 
          */
 
