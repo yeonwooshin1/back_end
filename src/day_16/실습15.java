@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class 실습15 { // class start
     public static void main(String[] args) {    // main start
-        /*
+
         // 1. 파일에 일기 쓰기
 
         String path = "src/day_16/diary.txt";   // 문자열 경로 = String path
@@ -46,26 +46,45 @@ public class 실습15 { // class start
         }   // catch end
 
 
-        */
+
         // 4. 방문 로그 누적 기록하기
+        // 아래 방법으로 해도 되지만 append를 써서 FileOutputStream(불러올 파일 경로 , false면 덮어쓰기 또는 true 면 있던 거에 추가 ) 할 수 있다. -> 참고하세용.
 
         Scanner scan = new Scanner(System.in);          // Scanner 생성
         try {
-            String paths = "src/day_16/visit_log.txt";
+            String paths = "src/day_16/visit_log.txt";  // 경로 생성 변수
 
-            FileOutputStream fout = new FileOutputStream(paths , true);   // FileOutputStream 객체 생성 ("파일경로");
+            File file = new File(paths);                // 지정된 경로의 파일의 정보를 제공하는 객체 file 생성
 
-            System.out.print("이름 입력 : ");     String name = scan.next();      // 이름 입력 받기
+            if(file.exists()){                          // file이 존재한다면?
+                FileInputStream fin = new FileInputStream(paths);   // 파일 입력 객체 생성
 
-            byte[] byteOut = (name+" 님이 방문했습니다. \n").getBytes();              // scan 받은 거 바이트로 변환
+                byte[] bytes = new byte[(int)file.length()];        // byte 타입의 배열에 file.length를 써서 공간 확보
+                fin.read( bytes );                                  // .read 로 불러오기
+                String str = new String( bytes );                   // 문자열로 변환하기
 
-            fout.write(byteOut);                  // 변수명.write(바이트 값); -> 바이트로 내보내기
+                FileOutputStream fout = new FileOutputStream(paths);  // FileOutputStream 객체 생성 ("파일경로");
+                System.out.print("이름 입력 : ");     String name = scan.next();      // 이름 입력 받기
+
+                byte[] byteOut = (str + name+" 님이 방문했습니다. \n").getBytes();              // 원래 있던 str 문자열 +scan 받은 거 바이트로 변환
+
+                fout.write(byteOut);                  // 변수명.write(바이트 값); -> 바이트로 내보내기
+
+            } else {                    // 존재하지 않는다면?
+                FileOutputStream fout = new FileOutputStream(paths);   // FileOutputStream 객체 생성 ("파일경로");
+
+                System.out.print("이름 입력 : ");     String name = scan.next();      // 이름 입력 받기
+
+                byte[] byteOut = (name+" 님이 방문했습니다. \n").getBytes();              // scan 받은 거 바이트로 변환
+
+                fout.write(byteOut);                  // 변수명.write(바이트 값); -> 바이트로 내보내기
+            }
 
         } catch (Exception e) { // 예외처리 Exception
             System.out.println(e);
         }   // catch end
 
-        /*
+
         // 5. 연락처를 CSV 형식으로 파일에 저장하기
         try {
             System.out.print("이름 : ");          String name = scan.next();           // scan 값 받기
@@ -141,7 +160,7 @@ public class 실습15 { // class start
         } catch (Exception e) { // 예외처리 Exception
             System.out.println(e);
         }   // catch end
-        */
+
     }   // main end
 }   // class end
 
