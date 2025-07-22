@@ -5,6 +5,7 @@ public class WaitingDto {   // class start
     // 멤버변수
     private String phone;
     private int count;
+    private int seq;
 
     // 생성자
     public WaitingDto(){}
@@ -30,6 +31,14 @@ public class WaitingDto {   // class start
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public int getSeq() {
+        return seq;
+    }
+
+    public void setSeq(int seq) {
+        this.seq = seq;
     }
 
     @Override

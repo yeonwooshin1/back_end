@@ -99,8 +99,12 @@ public class WaitingDao {   // class start
             FileWriter fileWriter = new FileWriter( path );
             // FileWriter 객체를 이용하여 CSVWriter 객체 생성 (라이브러리)
             CSVWriter csvWriter = new CSVWriter(fileWriter);
+
             // 문자열 배열인 리스트에 구현체인 ArrayList<>() 객체 대입.
+            // List를 쓰는 이유 : 코드에서 필요한 건 “리스트처럼 add 하고, 순회할 수 있는 기능”이지 ArrayList의 특정 구현 세부가 아니다.
+            // + csvWriter.writeAll(...) 메서드가 인자로 List<String[]>를 받도록 정의 되어있어 변수 타입을 List로 맞춰 두면 해당 메서드와도 잘 호환돼서.
             List<String[]> outData = new ArrayList<>();
+
             // DB 순회하면서 하나하나 outData에 넣는 걸 할 거임
             for (WaitingDto dto : waitingDB ) {  // 향상된 for문
                 // 문자열 배열인 row에 전화번호랑 인원수 넣기

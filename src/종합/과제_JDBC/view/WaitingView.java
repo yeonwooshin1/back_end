@@ -74,7 +74,7 @@ public class WaitingView {  // class start
         if(waitingDB.isEmpty()) System.out.println("대기 현황이 없습니다.");
         else {
             for (WaitingDto index : waitingDB) {    // 향상된 for문
-                System.out.println("1. 연락처 : " + index.getPhone() + " - 인원 :" + index.getCount() + "명");
+                System.out.println( index.getSeq() +". 연락처 : " + index.getPhone() + " - 인원 :" + index.getCount() + "명");
                 System.out.println("------------------------------------");
             }   // for end
         }   // if end

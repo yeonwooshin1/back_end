@@ -6,6 +6,7 @@ public class WaitingDto {   // class start
     private String phone;
     private int count;
 
+
     // 생성자
     public WaitingDto(){}
 
