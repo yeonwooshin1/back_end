@@ -19,12 +19,12 @@ public class WaitingDao {   // class start
     }
 
     // 임시 ArrayList로 DB 만들기
-    ArrayList<WaitingDto> watingDB = new ArrayList<>();
+    ArrayList<WaitingDto> waitingDB = new ArrayList<>();
 
     // 등록 메소드
     public boolean listWrite ( WaitingDto waitingDto ) {
         // 매개변수로 받은 Dto DB에 .add
-        watingDB.add(waitingDto);
+        waitingDB.add(waitingDto);
         // ArrayList에 dto 넣을 때 파일 쓰는 함수 실행
         saveCSV ();
         // 반환값 true;
@@ -34,7 +34,7 @@ public class WaitingDao {   // class start
 
     // 리스트 반환 메소드
     public ArrayList<WaitingDto> listPrint () {
-        return watingDB;
+        return waitingDB;
     }   // func end
 
 
@@ -79,7 +79,7 @@ public class WaitingDao {   // class start
                 // dto 생성 후 생성자에 매개변수로 넣기
                 WaitingDto dto = new WaitingDto( phone , count );
                 // ArrayList에 dto 저장
-                watingDB.add(dto);
+                waitingDB.add(dto);
             } // for end
             // 안전하게 csvReader 닫기
             csvReader.close();
@@ -102,7 +102,7 @@ public class WaitingDao {   // class start
             // 문자열 배열인 리스트에 구현체인 ArrayList<>() 객체 대입.
             List<String[]> outData = new ArrayList<>();
             // DB 순회하면서 하나하나 outData에 넣는 걸 할 거임
-            for (WaitingDto dto : watingDB ) {  // 향상된 for문
+            for (WaitingDto dto : waitingDB ) {  // 향상된 for문
                 // 문자열 배열인 row에 전화번호랑 인원수 넣기
                 // string.valueOf() : 문자열 아닌 애를 문자열로 바꿔줌.
                 String[] row = { dto.getPhone() , String.valueOf(dto.getCount())};

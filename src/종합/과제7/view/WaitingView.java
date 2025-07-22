@@ -69,11 +69,11 @@ public class WaitingView {  // class start
     public void listPrint(){
         System.out.println("============= 대기 현황 =============");
         // controller 에서 반환값으로 ArrayList를 가져온다.
-        ArrayList<WaitingDto> WaitingDB = controller.listPrint();
+        ArrayList<WaitingDto> waitingDB = controller.listPrint();
         // ArrayList에 있는 대기명단에 따라 if문
-        if(WaitingDB.isEmpty()) System.out.println("대기 현황이 없습니다.");
+        if(waitingDB.isEmpty()) System.out.println("대기 현황이 없습니다.");
         else {
-            for (WaitingDto index : WaitingDB) {    // 향상된 for문
+            for (WaitingDto index : waitingDB) {    // 향상된 for문
                 System.out.println("1. 연락처 : " + index.getPhone() + " - 인원 :" + index.getCount() + "명");
                 System.out.println("------------------------------------");
             }   // for end
