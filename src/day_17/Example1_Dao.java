@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.nio.charset.Charset;
 import java.util.List;
 
-public class Example1 { // class start
+public class Example1_Dao { // class start
     public static void main(String[] args) {    // main start
 
         // OpenCSV 라이브러리 -> 목적 : CSV 규칙에 따른 자동 분해/분리

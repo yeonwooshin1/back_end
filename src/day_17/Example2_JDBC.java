@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class Example2 { // class start
+public class Example2_JDBC { // class start
     public static void main(String[] args) {    // main start
         /*
             [ JDBC ] : JAVA DATABASE CONNECT 자바 데이터베이스 연동
