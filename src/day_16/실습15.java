@@ -58,6 +58,7 @@ public class 실습15 { // class start
         // 4. 방문 로그 누적 기록하기
         // 아래 방법으로 해도 되지만 append를 써서 FileOutputStream(불러올 파일 경로 , false면 덮어쓰기 또는 true 면 있던 거에 추가 ) 할 수 있다. -> 참고하세용.
         Scanner scan = new Scanner(System.in);          // Scanner 생성
+        System.out.print("이름 입력 : ");     String name = scan.next();      // 이름 입력 받기
         try {
             String paths = "src/day_16/visit_log.txt";  // 경로 생성 변수
 
@@ -69,11 +70,9 @@ public class 실습15 { // class start
                 byte[] bytes = new byte[(int)file.length()];        // byte 타입의 배열에 file.length를 써서 공간 확보
                 fin.read( bytes );                                  // .read 로 불러오기
                 String str = new String( bytes );                   // 문자열로 변환하기
-                System.out.print("이름 입력 : ");     String name = scan.next();      // 이름 입력 받기
                 q4Method(paths, str , name );                                       // 간략 메소드 -> main 메소드 위에 있음
             } else {                    // 존재하지 않는다면?
-                System.out.print("이름 입력 : ");     String name = scan.next();      // 이름 입력 받기
-                q4Method( paths,"" , name );                                    // 간략 메소드 ->? main 메소드 위에 있음
+                q4Method( paths, "" , name );                                   // 간략 메소드 ->? main 메소드 위에 있음
             }   // if end
 
         } catch (Exception e) { // 예외처리 Exception
