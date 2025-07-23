@@ -1,7 +1,7 @@
-package 종합.과제_JDBC.controller;  // package
+package 종합.과제8.controller;  // package
 
-import 종합.과제_JDBC.model.WaitingDao;
-import 종합.과제_JDBC.model.WaitingDto;
+import 종합.과제8.model.WaitingDao;
+import 종합.과제8.model.WaitingDto;
 
 import java.util.ArrayList;
 
@@ -28,6 +28,18 @@ public class WaitingController {    // class start
     public ArrayList<WaitingDto> listPrint (){
         // dao 배열 반환값 다시 반환
         return dao.listPrint();
+    }   // func end
+
+    // 리스트 삭제 메소드
+    public boolean listDelete(int seq ) {
+        return dao.listDelete(seq);
+    }   // func end
+
+    // 리스트 수정 메소드
+    public boolean listEdit (int seq , int count) {
+        WaitingDto dto = new WaitingDto( seq , count );
+
+        return dao.listEdit(dto);
     }   // func end
 
 }   // class end

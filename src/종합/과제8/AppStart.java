@@ -1,6 +1,6 @@
-package 종합.과제_JDBC; // package
+package 종합.과제8; // package
 
-import 종합.과제_JDBC.view.WaitingView;
+import 종합.과제8.view.WaitingView;
 
 public class AppStart { // class start
     public static void main(String[] args) {    // main start

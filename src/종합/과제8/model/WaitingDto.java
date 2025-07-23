@@ -1,4 +1,4 @@
-package 종합.과제_JDBC.model;   // package
+package 종합.과제8.model;   // package
 
 public class WaitingDto {   // class start
 
@@ -12,6 +12,11 @@ public class WaitingDto {   // class start
 
     public WaitingDto(String phone, int count) {
         this.phone = phone;
+        this.count = count;
+    }
+
+    public WaitingDto( int seq , int count ) {
+        this.seq = seq;
         this.count = count;
     }
 
