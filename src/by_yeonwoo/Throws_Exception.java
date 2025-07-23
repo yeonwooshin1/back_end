@@ -8,9 +8,9 @@ public class Throws_Exception {    // class start
 [ 신연우의 예외와 throws의 공부 ]
 
     1) 메소드에서 throws할 때 최상위 예외(Exception)을 줬을 경우
-        -> main 호출부에서 하위 예외을 썼을 때 throws (= 던질 때) 예외처리가 되었지만 catch 에서 (예 : NullPointException)하위 예외만 처리해주면 다른 예외가 생길 경우 컴파일이 안되어 오류가 뜰 수 있음.
+        -> main 호출부에서 하위 예외을 썼을 때 throws (= 던질 때) 예외처리가 되었지만 catch 에서 (예 : FileNotFoundException)하위 예외만 처리해주면 다른 예외가 생길 경우 컴파일이 안되어 오류가 뜰 수 있음.
 
-        !! 메소드에서 throws할 때 하위 예외 (NullPointException) 같은 걸 throws 해주면 나머지 catch 에서 상위 예외나 같은 예외를 써주면 예외 처리가 좀 쉬워지는 경향이 있음 !!
+        !! 메소드에서 throws할 때 하위 예외 (FileNotFoundException) 같은 걸 throws 해주면 나머지 catch 에서 상위 예외나 같은 예외를 써주면 예외 처리가 좀 쉬워지는 경향이 있음 !!
 
     2) 오버라이딩할 때 부모타입보다 자식타입이 더 큰 예외를 둘 수 없다.
 
