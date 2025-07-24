@@ -23,7 +23,7 @@ create table inquiry (        # 익명 문의 테이블
     iPassword varchar(30) not null ,
     iDate datetime default now() ,
     constraint primary key( iNo ) ,
-    constraint foreign key( pNo ) references product( pNo )
+    constraint foreign key( pNo ) references product( pNo ) on delete cascade
 );
 
 INSERT INTO product (pseller, pname, pcontent, pprice, ppassword, pstatus)
@@ -51,4 +51,5 @@ VALUES
 (6, '프로그래머', '배터리 수명 괜찮나요?', 'dev123'),
 (7, '운동왕', '운동할 때 좋을까요?', '9999'),
 (9, '익명', '기계식인가요?', 'qwerty');
-select * from inquiry;
+select * from product;
+

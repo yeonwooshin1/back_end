@@ -34,8 +34,8 @@ public class ProductController {    // class start
     } // func end
 
     // 물품 정보 수정
-    public boolean productUpdate( int pNoInput , String pNameInput , String pContentInput , int pPriceInput ) {
-        ProductDto dto = new ProductDto(pNoInput , pNameInput , pContentInput , pPriceInput);
+    public boolean productUpdate( int pNoInput , String pNameInput , String pContentInput , int pPriceInput , int pStatusInput) {
+        ProductDto dto = new ProductDto(pNoInput , pNameInput , pContentInput , pPriceInput , pStatusInput);
 
         return dao.productUpdate(dto);
     } // func end
@@ -59,7 +59,13 @@ public class ProductController {    // class start
 
     // 검색 조회
     public ArrayList<ProductDto> productSearch( int no , String search ) {
-        SearchDto dto = new SearchDto( no , search);
+        String value;
+        if ( no == 1 ) value = "pName" ;
+        else if ( no == 2) value = "pContent";
+        else if ( no == 3) value = "pSeller";
+        else value = "pPrice";
+
+        SearchDto dto = new SearchDto( value , search );
 
         return dao.productSearch(dto);
     } // func end
@@ -70,4 +76,13 @@ public class ProductController {    // class start
 
         return dao.identityCheck(dto);
     }
+
+    // int 인 pStatus 를 "판매중" , "판매완료"로 바꿔주는 헬퍼 메소드
+    public String toStringStatus (ProductDto dto) {
+        if (dto == null) return "불러오기 오류";
+        else if (dto.getpStatus() == 1) return "판매중";
+        else if (dto.getpStatus() == 2) return "판매완료";
+        else return "불러오기 오류";
+    }   // func end
+
 }   // class end

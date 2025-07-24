@@ -11,6 +11,7 @@ public class InquiryDto {   // class start
     private String iDate;
 
     // 생성자
+    public InquiryDto(){}
 
     public InquiryDto(int pNo, String iName, String iContent, String iPassword) {
         this.pNo = pNo;

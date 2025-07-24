@@ -6,6 +6,12 @@ public class RankingDto {   // class start
     private int count;
 
     // 생성자
+    public RankingDto(){}
+
+    public RankingDto(String pSeller, int count) {
+        this.pSeller = pSeller;
+        this.count = count;
+    }
 
     // setter getter
 

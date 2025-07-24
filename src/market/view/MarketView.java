@@ -27,26 +27,29 @@ public class MarketView {   // class start
 
     // 메인 view
     public void index () {
-        System.out.println("======================== 편한 중고 물품 거래 뚝딱 마켓 ========================");
-        System.out.println(" 1. 중고 물품 등록   | 2. 전체 물품 목록 조회 | 3. 물품 정보 수정 | 4. 등록 물품 삭제 ");
-        System.out.println(" 5. 익명 문의 남기기 | 6. 물품 상세 조회      | 7. 등록 랭킹 조회 | 8. 검색 조회     ");
-        System.out.println("===========================================================================");
-        try {
-            int choose = scan.nextInt();
+        for (;;) {
+            System.out.println("======================== 편한 중고 물품 거래 뚝딱 마켓 ========================");
+            System.out.println(" 1. 중고 물품 등록   | 2. 전체 물품 목록 조회 | 3. 물품 정보 수정 | 4. 등록 물품 삭제 ");
+            System.out.println(" 5. 익명 문의 남기기 | 6. 물품 상세 조회      | 7. 등록 랭킹 조회 | 8. 검색 조회     ");
+            System.out.println("===========================================================================");
+            System.out.print("선택 > ");
+            try {
+                int choose = scan.nextInt();
 
-            if (choose == 1) productAdd();
-            else if (choose == 2) productPrint();
-            else if (choose == 3) productUpdate();
-            else if (choose == 4) productDelete();
-            else if (choose == 5) inquiryAdd ();
-            else if (choose == 6) productDetails();
-            else if (choose == 7) rankingPrint();
-            else if (choose == 8) productSearch();
-            else System.out.println("[경고] 메뉴에 없는 선택입니다. ");
-        } catch (InputMismatchException e) {
-            System.out.println("[경고] 숫자만 입력하세요.");
-            scan.nextLine();
-        }   // catch end
+                if (choose == 1) productAdd();
+                else if (choose == 2) productPrint();
+                else if (choose == 3) productUpdate();
+                else if (choose == 4) productDelete();
+                else if (choose == 5) inquiryAdd ();
+                else if (choose == 6) productDetails();
+                else if (choose == 7) rankingPrint();
+                else if (choose == 8) productSearch();
+                else System.out.println("[경고] 메뉴에 없는 선택입니다. ");
+            } catch (InputMismatchException e) {
+                System.out.println("[경고] 숫자만 입력하세요.");
+                scan.nextLine();
+            }   // catch end
+        }   // for end
     }   // func end
 
 
@@ -63,7 +66,7 @@ public class MarketView {   // class start
                 System.out.print("물품명 : ");       pNameInput = scan.nextLine();
                 System.out.print("설명 : ");         pContentInput = scan.nextLine();
                 System.out.print("가격 : ");         pPriceInput = scan.nextInt();
-                System.out.print("비밀번호 :");       pPasswordInput = scan.next();
+                System.out.print("비밀번호 : ");       pPasswordInput = scan.next();
                 if(pPriceInput > 0) break;
                 else System.out.println("[경고] 1원 이상 입력해주세요.");
             } catch (InputMismatchException e) {
@@ -81,16 +84,22 @@ public class MarketView {   // class start
 
     // 전체 물품 목록 조회 view
     public void productPrint() {
-        System.out.println("============================= 전체 물품 목록 ==============================");
-        System.out.println(" no        물품명          가격           닉네임         등록일       판매여부" );
-        System.out.println("=========================================================================");
+        System.out.println("======================================= 전체 물품 목록 ========================================");
+        System.out.printf("%-5s %-20s %-10s %-12s %-20s %-8s%n",
+                "No", "물품명", "가격", "닉네임", "등록일", "판매여부");   // gpt야 너밖에 없다,,
+        System.out.println("=============================================================================================");
         ArrayList<ProductDto> productDB = productController.productPrint();
         for(ProductDto index : productDB) {
-            System.out.println(index.getpNo()+"\t"+ index.getpName()+
-                    "\t"+index.getpPrice()+"원\t"+ index.getpDate()+"\t"+ index.getpStatus());
+            System.out.printf("%-5d %-20s %-10s %-12s %-20s %-8s%n",
+                    index.getpNo(),
+                    index.getpName() ,
+                    index.getpPrice() + "원",
+                    index.getpSeller(),
+                    index.getpDate(),
+                    productController.toStringStatus(index));   // GPT 짱
 
             System.out.println("----------------------------------------------------" +
-                    "-------------------------------------------------------------------------");
+                    "-----------------------------------------");
         }   // for end
     }   // func end
 
@@ -118,27 +127,35 @@ public class MarketView {   // class start
         }   // while end
         scan.nextLine();
         System.out.print("물품명(수정) : ");   String pNameInput = scan.nextLine();
-        scan.nextLine();
+
         System.out.print("설명(수정) : ");    String pContentInput = scan.nextLine();
 
         int pPriceInput;
+        boolean result;
         while (true) {
             try {
                 System.out.print("가격(수정) : ");    pPriceInput = scan.nextInt();
+
+                System.out.println("< 1. 판매중 2. 판매완료 >");
+                System.out.print("판매 여부 수정 : ");        int pStatusInput = scan.nextInt();
+
                 if(pPriceInput <= 0 ) {
                     System.out.println("[경고] 유효한 가격을 입력하세요.");
                     System.out.println("----------------------------------------------------------------------------"); continue;
+                } else if (pStatusInput != 1 && pStatusInput != 2) {
+                    System.out.println("[경고] 판매여부 선택은 1 , 2 중에만 가능합니다.");
+                    System.out.println("----------------------------------------------------------------------------"); continue;
                 }   // if end
 
-                boolean result = productController.productUpdate( pNoInput , pNameInput , pContentInput , pPriceInput );
-
-                if ( result ) { System.out.println("[안내] 물품 수정이 완료되었습니다."); break; }
-                else System.out.println("[경고] 물품 수정 도중 오류가 발생했습니다.");
+                result = productController.productUpdate( pNoInput , pNameInput , pContentInput , pPriceInput , pStatusInput);
+                break;
             } catch (InputMismatchException e) {
                 System.out.println("[경고] 숫자 입력칸입니다. 다시 입력해주세요.");
                 scan.nextLine();
             }   // catch end
         }   // while end
+        if ( result ) { System.out.println("[안내] 물품 수정이 완료되었습니다.");}
+        else System.out.println("[경고] 물품 수정 도중 오류가 발생했습니다.");
     }   // func end
 
 
@@ -160,6 +177,7 @@ public class MarketView {   // class start
                     System.out.println("[경고] 비밀번호가 일치하지 않습니다. 다시 시도해주세요.");
                     System.out.println("----------------------------------------------------------------------------"); continue;
                 }   // if end
+
                 boolean result2 = productController.productDelete(pNoInput , pPasswordInput );
 
                 if(result2) { System.out.println("[성공] 물품 삭제가 완료되었습니다."); break; }
@@ -202,56 +220,71 @@ public class MarketView {   // class start
     public void productDetails() {
         System.out.println("============= 물품 상세 조회 =============");
         int pnoInput;
+        ProductDto productDB;
         while ( true ) {
             try {
                 System.out.print("조회할 물품 번호 : ");  pnoInput = scan.nextInt();
-                if (pnoInput > 0 ) break;
-                else System.out.println("[경고] 유효한 숫자를 입력하세요.");
+                if (pnoInput <= 0 ) {
+                    System.out.println("[경고] 유효한 숫자를 입력하세요.");
+                    continue;
+                }   // if end
+                productDB = productController.productDetails( pnoInput );
+                if( productDB == null ) {
+                    System.out.println("[경고] 해당 번호가 없습니다. 다시 입력해주세요.");
+                    continue;
+                }   // if end
+                break;
             } catch (InputMismatchException e) {
                 System.out.println("[경고] 목록에 있는 숫자를 입력하세요.");
                 scan.nextLine();
             }   // catch end
         }   // while end
 
-        ProductDto productDB = productController.productDetails( pnoInput );
         System.out.println("=====================================");
         System.out.println("물품명 : " + productDB.getpName());
         System.out.println("설명 : " + productDB.getpContent());
         System.out.println("가격 : " + productDB.getpPrice());
         System.out.println("닉네임 : " + productDB.getpSeller());
         System.out.println("등록일 : " + productDB.getpDate());
-        System.out.println("판매여부 : " + productDB.getpStatus());
+        System.out.println("판매여부 : " + productController.toStringStatus(productDB));
 
         ArrayList<InquiryDto> inquiryDB = inquiryController.inquiryDetails( pnoInput );
 
         System.out.println("============= 익명 문의 목록 =============");
-        for( int i = 1; i <= inquiryDB.size(); i++ ) {
-            InquiryDto index = inquiryDB.get(1 - i);
-            System.out.println("["+i+"]");
-            System.out.println("닉네임 : " + index.getiName() );
-            System.out.println("문의내용 : " + index.getiContent() );
-            System.out.println("-----------------------------------------");
-        }   // for end
+
+        if (inquiryDB.isEmpty()) System.out.println("[안내] 문의가 없습니다.");
+        else {
+            for( int i = 1; i <= inquiryDB.size(); i++ ) {
+                InquiryDto index = inquiryDB.get(i -1);
+                System.out.println("["+i+"]");
+                System.out.println("닉네임 : " + index.getiName() );
+                System.out.println("문의내용 : " + index.getiContent() );
+                System.out.println("-----------------------------------------");
+            }   // for end
+        }   // if end
     }   // func end
 
     // 등록 랭킹 조회 view
     public void rankingPrint() {
         System.out.println("============= 등록 랭킹 =============");
-        System.out.println("  순위         닉네임         등록수  ");
-
+        System.out.printf("%-4s %-15s %-6s%n", "순위", "닉네임", "등록수"); // gpt야 고맙다...
+        System.out.println("===================================");
         ArrayList<RankingDto> rankingDB = productController.rankingPrint();
-
-        for( int i = 1; i <= rankingDB.size(); i++ ) {
-            RankingDto index = rankingDB.get(1 - i);
-            System.out.println( i+"등 \t" + index.getpSeller()+"\t" + index.getCount()+ "개");
-            System.out.println("===================================");
-        }   // for end
+        if (rankingDB.isEmpty()) {
+            System.out.println("[안내] 게시물이 없어요! 먼저 게시물을 달면 당신이 1등!");
+        } else {
+            for( int i = 1; i <= rankingDB.size(); i++ ) {
+                RankingDto index = rankingDB.get(i -1);
+                System.out.printf("%-4s %-15s %-6s%n", i + "등", index.getpSeller() , index.getCount() + "개"); // gpt 고맙다,,
+                System.out.println("===================================");
+            }   // for end
+        }   // if end
     }   // func end
 
     // 검색 조회 view
     public void productSearch() {
         System.out.println("================= 검색창 ================");
-        System.out.println("< 1. 물품명 2. 설명 3. 닉네임 4. 판매여부 5. 가격 >");
+        System.out.println("< 1. 물품명 2. 설명 3. 닉네임 4. 가격 >");
         String chooseValue;
         int no;
         while (true) {
@@ -259,7 +292,7 @@ public class MarketView {   // class start
                 System.out.print("검색 대상 선택  : ");  no = scan.nextInt();
                 if(no == 1) chooseValue = "물품명";  else if(no == 2) chooseValue = "설명";
                 else if(no == 3) chooseValue = "닉네임"; else if(no == 4) chooseValue = "가격";
-                else { System.out.println("[경고] 보기의 항목 중에 선택하세요. (5개 항목)"); continue; };
+                else { System.out.println("[경고] 보기의 항목 중에 선택하세요. (4개 항목)"); continue; }
 
                 break;
             } catch (InputMismatchException e) {
@@ -269,27 +302,31 @@ public class MarketView {   // class start
         }   // while end
 
         scan.nextLine();
-        System.out.println("<-- "+chooseValue+"에서 검색 -->");
+        System.out.println("<-- "+chooseValue+"에서 검색 -->" );
 
         if (no == 4) System.out.println("[정보] 검색한 가격 이하만 조회합니다.");
 
-        System.out.print("검색 :"); String search = scan.nextLine();
+        System.out.print("검색 : "); String search = scan.nextLine();
         System.out.println();
         System.out.println("------------------------------------------------------------");
 
         ArrayList<ProductDto> productDB = productController.productSearch( no , search );
+        if(productDB.isEmpty()) {
+            System.out.println("[안내] 검색 결과가 없습니다.");
+        } else {
+            for ( int i = 1; i <= productDB.size(); i++ ) {
+                ProductDto index = productDB.get( i -1 );
 
-        for ( int i = 1; i <= productDB.size(); i++ ) {
-            ProductDto index = productDB.get(1 - i);
-            System.out.println(i+".");
-            System.out.println("물품명 : " + index.getpName());
-            System.out.println("설명 : " + index.getpContent());
-            System.out.println("가격 : " + index.getpPrice());
-            System.out.println("닉네임 : " + index.getpSeller());
-            System.out.println("등록일 : " + index.getpDate());
-            System.out.println("판매여부 : " + index.getpStatus());
-            System.out.println("-----------------------------------------------------------------");
-        }   // for end
+                System.out.println(i+".");
+                System.out.println("물품명 : " + index.getpName());
+                System.out.println("설명 : " + index.getpContent());
+                System.out.println("가격 : " + index.getpPrice());
+                System.out.println("닉네임 : " + index.getpSeller());
+                System.out.println("등록일 : " + index.getpDate());
+                System.out.println("판매여부 : " + productController.toStringStatus(index));
+                System.out.println("-----------------------------------------------------------------");
+            }   // for end
+        } // if end
     }   // func end
 }   // class end
 

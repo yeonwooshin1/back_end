@@ -2,24 +2,25 @@ package market.model.dto;   // package
 
 public class SearchDto {    // class start
     // 멤버변수
-    private int no;
+    private String value;
     private String search;
 
     // 생성자
+    public SearchDto(){}
 
-    public SearchDto(int no, String search) {
-        this.no = no;
+    public SearchDto(String value, String search) {
+        this.value = value;
         this.search = search;
     }
 
     // setter getter
 
-    public int getNo() {
-        return no;
+    public String getValue() {
+        return value;
     }
 
-    public void setNo(int no) {
-        this.no = no;
+    public void setValue(String value) {
+        this.value = value;
     }
 
     public String getSearch() {
@@ -30,11 +31,13 @@ public class SearchDto {    // class start
         this.search = search;
     }
 
+
     // toString
+
     @Override
     public String toString() {
         return "SearchDto{" +
-                "no=" + no +
+                "value='" + value + '\'' +
                 ", search='" + search + '\'' +
                 '}';
     }

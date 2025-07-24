@@ -23,7 +23,7 @@ public class InquiryController {    // class start
         InquiryDto dto = new InquiryDto(pNoInput , iNameInput , iContentInput , iPasswordInput );
 
         return dao.inquiryAdd(dto);
-    }   // func end
+    }   // func endD
 
     // 익명 db 가져오기
     public ArrayList<InquiryDto> inquiryDetails( int pnoInput ) {

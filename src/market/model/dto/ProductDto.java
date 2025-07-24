@@ -12,6 +12,7 @@ public class ProductDto {   // class start
     private int pStatus;
 
     // 생성자
+    public ProductDto(){}
 
     public ProductDto(String pSeller, String pName, String pContent, int pPrice, String pPassword) {
         this.pSeller = pSeller;
@@ -21,11 +22,12 @@ public class ProductDto {   // class start
         this.pPassword = pPassword;
     }
 
-    public ProductDto( int pNo, String pName, String pContent, int pPrice) {
+    public ProductDto( int pNo, String pName, String pContent, int pPrice , int pStatus) {
         this.pName = pName;
         this.pNo = pNo;
         this.pContent = pContent;
         this.pPrice = pPrice;
+        this.pStatus = pStatus;
     }
 
     public ProductDto(int pNo, String pPassword) {
