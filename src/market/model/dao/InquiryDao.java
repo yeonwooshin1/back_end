@@ -52,7 +52,7 @@ public class InquiryDao {   // class start
             int result = ps.executeUpdate();
 
             return result == 1;
-        } catch (SQLIntegrityConstraintViolationException  e) {
+        } catch (SQLIntegrityConstraintViolationException  e) {// SQLIntegrityConstraintViolationException -> FK 값이 없는데 넣을 때 예외, 없는 상품에 글 쓸 순 없잖어~
             System.out.println("[경고] 존재하지 않는 상품 번호입니다.");
             return false;
         } catch (SQLException e) {
