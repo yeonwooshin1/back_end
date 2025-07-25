@@ -61,8 +61,8 @@ public class MarketView {   // class start
         int pPriceInput; String pPasswordInput;
         while ( true ) {
             try {
-                System.out.print("판매자 닉네임 : "); pSellerInput = scan.next();
                 scan.nextLine();
+                System.out.print("판매자 닉네임 : "); pSellerInput = scan.nextLine();
                 System.out.print("물품명 : ");       pNameInput = scan.nextLine();
                 System.out.print("설명 : ");         pContentInput = scan.nextLine();
                 System.out.print("가격 : ");         pPriceInput = scan.nextInt();
