@@ -97,7 +97,6 @@ public class MarketView {   // class start
                     index.getpSeller(),                                                 // , : 천 단위 구분자        d : 정수
                     index.getpDate(),
                     productController.toStringStatus(index));   // GPT 짱
-
             System.out.println("----------------------------------------------------" +
                     "-----------------------------------------");
         }   // for end
