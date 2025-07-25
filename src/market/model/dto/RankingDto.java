@@ -2,8 +2,8 @@ package market.model.dto;   // package
 
 public class RankingDto {   // class start
     // 멤버변수
-    private String pSeller;
-    private int count;
+    private String pSeller;     // 판매자 이름
+    private int count;          // 판매글 count
 
     // 생성자
     public RankingDto(){}

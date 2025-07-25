@@ -2,8 +2,8 @@ package market.model.dto;   // package
 
 public class SearchDto {    // class start
     // 멤버변수
-    private String value;
-    private String search;
+    private String value;   // 카테고리 벨류값
+    private String search;  // 검색 벨류값
 
     // 생성자
     public SearchDto(){}

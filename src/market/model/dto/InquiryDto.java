@@ -2,13 +2,13 @@ package market.model.dto;   // package
 
 public class InquiryDto {   // class start
     // 멤버변수
-    private int pNo;
+    private int pNo;            // FK값 제품글 코드
 
-    private int iNo;
-    private String iName;
-    private String iContent;
-    private String iPassword;
-    private String iDate;
+    private int iNo;            // 익명 문의글 코드
+    private String iName;       // 익명 문의 닉네임
+    private String iContent;    // 익명 문의 글내용
+    private String iPassword;   // 익명글 비밀번호
+    private String iDate;       // 익명글 올린 날짜
 
     // 생성자
     public InquiryDto(){}

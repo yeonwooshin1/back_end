@@ -93,8 +93,8 @@ public class MarketView {   // class start
             System.out.printf("%-5d %-20s %-10s %-12s %-20s %-8s%n",
                     index.getpNo(),
                     index.getpName() ,
-                    index.getpPrice() + "원",
-                    index.getpSeller(),
+                    String.format("%,d", index.getpPrice()) + "원",                      // String.format(가격에 콤마 찍기) -> % : 명령어의 시작
+                    index.getpSeller(),                                                 // , : 천 단위 구분자        d : 정수
                     index.getpDate(),
                     productController.toStringStatus(index));   // GPT 짱
 
@@ -243,7 +243,7 @@ public class MarketView {   // class start
         System.out.println("=====================================");
         System.out.println("물품명 : " + productDB.getpName());
         System.out.println("설명 : " + productDB.getpContent());
-        System.out.println("가격 : " + productDB.getpPrice());
+        System.out.println("가격 : " + String.format("%,d", productDB.getpPrice()) + "원");    // String.format() "%" -> 포멧 시작 명령어   "," -> 천 단위 콤마  "d" -> 정수타입
         System.out.println("닉네임 : " + productDB.getpSeller());
         System.out.println("등록일 : " + productDB.getpDate());
         System.out.println("판매여부 : " + productController.toStringStatus(productDB));
@@ -307,7 +307,6 @@ public class MarketView {   // class start
         if (no == 4) System.out.println("[정보] 검색한 가격 이하만 조회합니다.");
 
         System.out.print("검색 : "); String search = scan.nextLine();
-        System.out.println();
         System.out.println("------------------------------------------------------------");
 
         ArrayList<ProductDto> productDB = productController.productSearch( no , search );
@@ -320,7 +319,7 @@ public class MarketView {   // class start
                 System.out.println(i+".");
                 System.out.println("물품명 : " + index.getpName());
                 System.out.println("설명 : " + index.getpContent());
-                System.out.println("가격 : " + index.getpPrice());
+                System.out.println("가격 : " + String.format("%,d", index.getpPrice()) + "원");    // String.format() "%" -> 포멧 시작 명령어   "," -> 천 단위 콤마  "d" -> 정수타입
                 System.out.println("닉네임 : " + index.getpSeller());
                 System.out.println("등록일 : " + index.getpDate());
                 System.out.println("판매여부 : " + productController.toStringStatus(index));

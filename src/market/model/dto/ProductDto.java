@@ -2,14 +2,14 @@ package market.model.dto;   // package
 
 public class ProductDto {   // class start
     // 멤버변수
-    private int pNo;
-    private String pSeller;
-    private String pName;
-    private String pContent;
-    private int pPrice;
-    private String pPassword;
-    private String pDate;
-    private int pStatus;
+    private int pNo;            // 제품글번호
+    private String pSeller;     // 판매자 이름
+    private String pName;       // 제품명
+    private String pContent;    // 제품설명
+    private int pPrice;         // 제품가격
+    private String pPassword;   // 제품글 비밀번호
+    private String pDate;       // 제품글 올린 날짜
+    private int pStatus;        // 판매상태
 
     // 생성자
     public ProductDto(){}
