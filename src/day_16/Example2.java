@@ -22,10 +22,8 @@ public class Example2 { // class start
         try{ method1(); } // <--- 예외가 발생하는 메소드 호출
         catch ( NullPointerException e ) { System.out.println("method1의 예외 발생" + e );}
         try { method2(); } // <--- 예외가 발생하는 메소드 호출
-        catch (ClassNotFoundException e) { System.out.println("method2 의 예외 발생" + e); }
+        catch (ClassNotFoundException e) { System.out.println("method2 의 예외 발생" + e);
 
-
-
-
-    }   // main end
+        }   // main end
+    }
 }   // class end
